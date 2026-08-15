@@ -1,0 +1,460 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<title>OPERACIÓN AION — GUÍA GAME MASTER</title>
+<style>
+  *{margin:0;padding:0;box-sizing:border-box}
+  body{font-family:'Courier New',Courier,monospace;font-size:13px;color:#111;background:#fff;padding:24px;max-width:960px;margin:auto}
+  h1{font-size:22px;letter-spacing:4px;text-transform:uppercase;border-bottom:3px solid #111;padding-bottom:8px;margin-bottom:18px}
+  h2{font-size:15px;letter-spacing:3px;text-transform:uppercase;background:#111;color:#fff;padding:7px 12px;margin:24px 0 12px}
+  h3{font-size:13px;letter-spacing:2px;text-transform:uppercase;border-left:4px solid #555;padding-left:8px;margin:16px 0 8px;color:#333}
+  table{width:100%;border-collapse:collapse;margin-bottom:14px;font-size:12px}
+  th{background:#333;color:#fff;padding:7px 10px;text-align:left;letter-spacing:1px;font-size:11px}
+  td{padding:7px 10px;border:1px solid #ccc}
+  tr:nth-child(even) td{background:#f6f6f6}
+  .prueba-block{border:1px solid #999;margin-bottom:20px;page-break-inside:avoid}
+  .prueba-header{background:#444;color:#fff;padding:8px 14px;display:flex;justify-content:space-between;align-items:center}
+  .prueba-title{font-size:14px;letter-spacing:2px;text-transform:uppercase;font-weight:bold}
+  .prueba-badge{font-size:11px;letter-spacing:1px;opacity:.8}
+  .prueba-body{padding:14px}
+  .sol-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin-bottom:12px}
+  .sol-card{border:1px solid #999;padding:9px;text-align:center}
+  .sol-team{font-size:10px;letter-spacing:2px;margin-bottom:4px;font-weight:bold}
+  .sol-code{font-size:18px;font-weight:bold;letter-spacing:3px}
+  .sol-detail{font-size:10px;color:#555;margin-top:4px;line-height:1.5}
+  .pistas{background:#f9f9f9;border-left:3px solid #999;padding:10px 14px;margin:10px 0}
+  .pista-row{margin-bottom:6px;font-size:12px}
+  .pista-label{font-weight:bold;color:#333}
+  .alerta{background:#fff3cc;border:1px solid #cc9900;padding:8px 12px;font-size:12px;margin:8px 0}
+  .url-table td:first-child{font-family:'Courier New';font-size:11px}
+  .color-alfa{color:#006644;font-weight:bold}
+  .color-beta{color:#003388;font-weight:bold}
+  .color-gamma{color:#550088;font-weight:bold}
+  .color-delta{color:#884400;font-weight:bold}
+  .badge-alfa{background:#006644;color:#fff;padding:2px 6px;font-size:10px}
+  .badge-beta{background:#003388;color:#fff;padding:2px 6px;font-size:10px}
+  .badge-gamma{background:#550088;color:#fff;padding:2px 6px;font-size:10px}
+  .badge-delta{background:#884400;color:#fff;padding:2px 6px;font-size:10px}
+  .flow{background:#eee;padding:12px;font-size:12px;line-height:2;margin-bottom:12px}
+  .warning{background:#ffe0e0;border:1px solid #cc0000;padding:8px 12px;font-size:12px;margin:8px 0;color:#800000}
+  .qr-edit{background:#f0f8f0;border:2px dashed #006644;padding:10px 14px;margin:10px 0;font-size:12px}
+  .qr-edit td{font-size:12px;vertical-align:top}
+  .qr-edit .zona-label{font-weight:bold;font-size:11px;letter-spacing:1px;color:#006644}
+  p{margin-bottom:8px;font-size:12px;line-height:1.7}
+  ul{margin:6px 0 10px 18px;font-size:12px;line-height:1.8}
+  @media print{
+    h2{break-before:avoid}
+    .prueba-block{page-break-inside:avoid}
+    body{padding:12px;font-size:12px}
+  }
+</style>
+</head>
+<body>
+
+<h1>OPERACIÓN AION — GUÍA GAME MASTER</h1>
+<p><strong>Evento:</strong> Villa Colona &nbsp;|&nbsp; <strong>Equipos:</strong> ALFA · BETA · GAMMA · DELTA &nbsp;|&nbsp; <strong>Jugadores:</strong> 12 adultos (3 por equipo) &nbsp;|&nbsp; <strong>Duración estimada:</strong> 90–120 min</p>
+<p><strong>Objetivo:</strong> Primer equipo en introducir su código de autorización final en el TERMINAL CENTRAL gana. Formato carrera pura.</p>
+
+<!-- ══════════ TABLA MAESTRA ══════════ -->
+<h2>1 · Tabla Maestra de Códigos</h2>
+<table>
+  <tr>
+    <th>PRUEBA</th><th>MECÁNICA</th>
+    <th class="badge-alfa">ALFA</th>
+    <th class="badge-beta">BETA</th>
+    <th class="badge-gamma">GAMMA</th>
+    <th class="badge-delta">DELTA</th>
+  </tr>
+  <tr><td>P1 — SEÑAL</td><td>Nube de símbolos (contar, mayor→menor)</td><td>879897</td><td>987978</td><td>798789</td><td>987879</td></tr>
+  <tr><td>P2 — PULSO</td><td>Audio Morse (5 letras)</td><td>OMEGA</td><td>ALERT</td><td>ABORT</td><td>SIGMA</td></tr>
+  <tr><td>P3 — MONITORIZACIÓN</td><td>Sensores en alarma (4 dígitos)</td><td>4851</td><td>9623</td><td>7140</td><td>3076</td></tr>
+  <tr><td>P4 — MÁSCARA</td><td>Overlay físico A5 sobre grid A3 (4 letras)</td><td>DARK</td><td>MESH</td><td>FLUX</td><td>LOCK</td></tr>
+  <tr><td>P5 — ESPECTRAL</td><td>Cancelación de señales de color (4 chars)</td><td>7X03</td><td>9K21</td><td>4M08</td><td>5N29</td></tr>
+  <tr><td>P6 — TRAZADO</td><td>Recorrido Dr. Navarro en cuadrícula (4 dígitos)</td><td>5927</td><td>3814</td><td>6043</td><td>2358</td></tr>
+  <tr><td>P7 — SECUENCIA</td><td>Mastermind 5 procesos (deducción)</td><td>2619</td><td>4753</td><td>8302</td><td>1485</td></tr>
+  <tr><td>P8 — INTERFERENCIA</td><td>Intersección de líneas con regla (4 dígitos)</td><td>7284</td><td>5391</td><td>6047</td><td>3916</td></tr>
+  <tr><td>P9 — NEUTRALIZACIÓN</td><td>Activar 4 nodos en orden (P8→P5→P3→P7)</td><td>AION-ALFA-2847</td><td>AION-BETA-5193</td><td>AION-GAMMA-6720</td><td>AION-DELTA-4031</td></tr>
+  <tr><td><strong>TERMINAL FINAL</strong></td><td>Selector CÉLULA + código 4 dígitos</td><td>ALFA / 2847</td><td>BETA / 5193</td><td>GAMMA / 6720</td><td>DELTA / 4031</td></tr>
+</table>
+
+<div class="warning">⚠ CONFIDENCIAL — No mostrar a los jugadores. Imprimir una sola copia para uso exclusivo del GM.</div>
+
+<!-- ══════════ MAPA DE URLs ══════════ -->
+<h2>2 · Mapa de Archivos (URLs por Equipo)</h2>
+<p>Los archivos p2–p9 han sido renombrados para impedir acceso directo por URL. El éxito de cada prueba muestra un enlace al siguiente nodo. <strong>La única forma de avanzar es resolver la prueba.</strong></p>
+
+<table class="url-table">
+  <tr><th>PRUEBA</th><th>NOMBRE REAL DEL ARCHIVO</th><th>NODO</th></tr>
+  <tr><td>P1</td><td>p1.html</td><td>SEÑAL (entrada por QR)</td></tr>
+  <tr><td>P2</td><td>p2vk3m.html</td><td>PULSO</td></tr>
+  <tr><td>P3</td><td>p3nw8x.html</td><td>MONITORIZACIÓN</td></tr>
+  <tr><td>P4</td><td>p4rx5q.html</td><td>MÁSCARA</td></tr>
+  <tr><td>P5</td><td>p5jt2b.html</td><td>ESPECTRAL</td></tr>
+  <tr><td>P6</td><td>p6hs9d.html</td><td>TRAZADO</td></tr>
+  <tr><td>P7</td><td>p7mf4k.html</td><td>SECUENCIA (Mastermind)</td></tr>
+  <tr><td>P8</td><td>p8gy7n.html</td><td>INTERFERENCIA</td></tr>
+  <tr><td>P9</td><td>p9cw6r.html</td><td>ACTIVACIÓN (final)</td></tr>
+</table>
+<p>URL base: <code>http://[IP]:8080/[equipo]/[archivo]</code> &nbsp;·&nbsp; Servidor: <code>python3 -m http.server 8080</code> (ejecutar en carpeta AION)</p>
+<p>Ejemplo ALFA: <code>http://192.168.x.x:8080/alfa/p1.html</code> → acceso inicial vía QR.</p>
+
+<!-- ══════════ ZONAS QR ══════════ -->
+<h2>3 · Ubicaciones Físicas de los QR</h2>
+<p>Hay <strong>7 QR físicos</strong> para las pruebas P1–P7. P8 enlaza directamente a P9 sin QR adicional. Cada prueba tiene 4 QR (uno por equipo) colocados en la misma zona. Los QR apuntan a la URL del equipo correspondiente.</p>
+
+<div class="alerta">⚙ EDITA ESTA TABLA antes del evento: cambia la columna "UBICACIÓN FÍSICA" para adaptarla al espacio real. Las columnas "ZONA" y "PISTA EN HTML" ya están programadas en los HTML — no las modifiques a menos que también cambies los archivos.</div>
+
+<table class="qr-edit">
+  <tr>
+    <th>QR</th>
+    <th>ACCEDE A</th>
+    <th>ZONA (nombre en HTML)</th>
+    <th>PISTA EN HTML (texto que ve el jugador)</th>
+    <th>UBICACIÓN FÍSICA (editable)</th>
+  </tr>
+  <tr>
+    <td>QR 1</td>
+    <td>P1 — SEÑAL</td>
+    <td><span class="zona-label">—</span><br><small>(en el dossier, no hay pista de zona para P1)</small></td>
+    <td><em>QR inicial incluido en el dossier físico</em></td>
+    <td style="background:#fffde0"><strong>[UBICACIÓN DEL QR 1]</strong><br><small>p.ej. "En la portada del dossier"</small></td>
+  </tr>
+  <tr>
+    <td>QR 2</td>
+    <td>P2 — PULSO</td>
+    <td><span class="zona-label">DESCANSO</span></td>
+    <td>"Ante el portón de la finca, el banquito de granito guarda silencio."</td>
+    <td style="background:#fffde0"><strong>[UBICACIÓN DEL QR 2]</strong><br><small>p.ej. "Pegado bajo el banco de granito"</small></td>
+  </tr>
+  <tr>
+    <td>QR 3</td>
+    <td>P3 — MONITORIZACIÓN</td>
+    <td><span class="zona-label">PASEO</span></td>
+    <td>"Móntate y pedalea, aunque las ruedas nunca lleguen a ningún lado."</td>
+    <td style="background:#fffde0"><strong>[UBICACIÓN DEL QR 3]</strong><br><small>p.ej. "En el manillar de la bici estática"</small></td>
+  </tr>
+  <tr>
+    <td>QR 4</td>
+    <td>P4 — MÁSCARA</td>
+    <td><span class="zona-label">CALOR</span></td>
+    <td>"En invierno tu gran amigo. La estufa de pellets guarda más que calor."</td>
+    <td style="background:#fffde0"><strong>[UBICACIÓN DEL QR 4]</strong><br><small>p.ej. "Pegado en la parte trasera de la estufa"</small></td>
+  </tr>
+  <tr>
+    <td>QR 5</td>
+    <td>P5 — ESPECTRAL</td>
+    <td><span class="zona-label">ÁRBOL</span></td>
+    <td>"Gordales, hojiblanca, manzanilla... Mira hacia las ramas del olivo."</td>
+    <td style="background:#fffde0"><strong>[UBICACIÓN DEL QR 5]</strong><br><small>p.ej. "Colgado en una rama baja del olivo"</small></td>
+  </tr>
+  <tr>
+    <td>QR 6</td>
+    <td>P6 — TRAZADO</td>
+    <td><span class="zona-label">BBQ</span></td>
+    <td>"Donde el fuego reúne y el humo asciende. La brasa sabe tu destino."</td>
+    <td style="background:#fffde0"><strong>[UBICACIÓN DEL QR 6]</strong><br><small>p.ej. "Bajo la parrilla de la barbacoa"</small></td>
+  </tr>
+  <tr>
+    <td>QR 7</td>
+    <td>P7 — SECUENCIA</td>
+    <td><span class="zona-label">BANDERAS</span></td>
+    <td>"Ondean al viento. Europa, Andalucía y más. Sigue los colores."</td>
+    <td style="background:#fffde0"><strong>[UBICACIÓN DEL QR 7]</strong><br><small>p.ej. "En el mástil de las banderas"</small></td>
+  </tr>
+</table>
+
+<p><strong>Nota P8:</strong> Al completar P8, la página enlaza directamente a P9 (no hay QR físico). El jugador hace clic en el enlace en pantalla.</p>
+<p><strong>Generación de QR:</strong> 4 equipos × 7 pruebas = 28 QR. Cada QR apunta a la URL del equipo correspondiente (<code>http://[IP]:8080/alfa/p2vk3m.html</code>, etc.). Los 4 QR de la misma prueba se colocan en la misma zona física.</p>
+
+<!-- ══════════ FLUJO ══════════ -->
+<h2>4 · Flujo de Juego</h2>
+<div class="flow">
+QR en dossier → <strong>P1</strong> (nube símbolos, 6 dígitos) → pista zona DESCANSO → QR 2<br>
+→ <strong>P2</strong> (audio Morse, 5 letras) → pista zona PASEO → QR 3<br>
+→ <strong>P3</strong> (sensores, 4 dígitos) → pista zona CALOR → QR 4<br>
+→ <strong>P4</strong> FÍSICO (overlay A5 sobre grid A3) → P4 HTML valida palabra → pista zona ÁRBOL → QR 5<br>
+→ <strong>P5</strong> (cancelación señales color, 4 chars) → pista zona BBQ → QR 6<br>
+→ <strong>P6</strong> FÍSICO (cuadrícula) + P6 HTML (narrativa Dr. Navarro) → 4 dígitos → pista zona BANDERAS → QR 7<br>
+→ <strong>P7</strong> (Mastermind 5 procesos, deducción) → revela código al resolver → enlace a P8<br>
+→ <strong>P8</strong> FÍSICO (nube símbolos + regla) + P8 HTML → 4 dígitos → enlace directo a P9<br>
+→ <strong>P9</strong> (activar 4 nodos en orden: INTERFERENCIA → ESPECTRAL → MONITORIZACIÓN → SECUENCIA) → revela código auth final<br>
+→ <strong>TERMINAL CENTRAL</strong> (selector CÉLULA + código 4 dígitos)
+</div>
+
+<div class="alerta">📌 ORDEN P9: Los jugadores introducen los 4 códigos en este orden fijo: 1.º código de P8 (INTERFERENCIA) → 2.º código de P5 (ESPECTRAL) → 3.º código de P3 (MONITORIZACIÓN) → 4.º código de P7 (SECUENCIA). Un código incorrecto reinicia la secuencia completa desde el paso 1. La pista del orden está al final del texto narrativo de P6.</div>
+
+<!-- ══════════ P1 ══════════ -->
+<h2>5 · Detalle de Pruebas</h2>
+
+<div class="prueba-block">
+  <div class="prueba-header"><span class="prueba-title">P1 — SEÑAL</span><span class="prueba-badge">Nube de símbolos animada · 6 dígitos</span></div>
+  <div class="prueba-body">
+    <h3>Mecánica</h3>
+    <p>La pantalla muestra una nube de 6 tipos de símbolo en movimiento (⬡ ◆ ● ▲ ■ ✦), cada uno de tamaño distinto. Los jugadores deben contar cuántos hay de cada tipo e introducir los conteos de mayor a menor símbolo.</p>
+    <h3>Solución por equipo</h3>
+    <div class="sol-grid">
+      <div class="sol-card"><div class="sol-team color-alfa">ALFA</div><div class="sol-code">879897</div><div class="sol-detail">⬡=8 · ◆=7 · ●=9 · ▲=8 · ■=9 · ✦=7</div></div>
+      <div class="sol-card"><div class="sol-team color-beta">BETA</div><div class="sol-code">987978</div><div class="sol-detail">⬡=9 · ◆=8 · ●=7 · ▲=9 · ■=7 · ✦=8</div></div>
+      <div class="sol-card"><div class="sol-team color-gamma">GAMMA</div><div class="sol-code">798789</div><div class="sol-detail">⬡=7 · ◆=9 · ●=8 · ▲=7 · ■=8 · ✦=9</div></div>
+      <div class="sol-card"><div class="sol-team color-delta">DELTA</div><div class="sol-code">987879</div><div class="sol-detail">⬡=9 · ◆=8 · ●=7 · ▲=8 · ■=7 · ✦=9</div></div>
+    </div>
+    <div class="pistas">
+      <div class="pista-row"><span class="pista-label">PISTA 1:</span> "Los símbolos son de 6 tamaños diferentes. El más grande va primero en el código."</div>
+      <div class="pista-row"><span class="pista-label">PISTA 2:</span> "Cuenta cuántas veces aparece cada tipo de símbolo. El código tiene un dígito por tipo, de mayor a menor según el tamaño del símbolo en pantalla."</div>
+      <div class="pista-row"><span class="pista-label">PISTA 3:</span> "El hexágono (⬡) es el mayor, el asterisco pequeño (✦) es el menor. Cuenta cada uno: el resultado es el código de 6 dígitos."</div>
+    </div>
+    <p><strong>Errores frecuentes:</strong> Confundir el orden (menor a mayor en vez de mayor a menor). Contar mal los símbolos pequeños mientras se mueven. Recordar que son exactamente 6 tipos.</p>
+    <p><strong>Reinicio:</strong> Recargar la página. La posición de los símbolos cambia pero las cantidades son fijas.</p>
+  </div>
+</div>
+
+<!-- P2 -->
+<div class="prueba-block">
+  <div class="prueba-header"><span class="prueba-title">P2 — PULSO</span><span class="prueba-badge">Audio Morse · 5 letras</span></div>
+  <div class="prueba-body">
+    <h3>Mecánica</h3>
+    <p>La página reproduce una secuencia de pitidos en código Morse (~6.7 s). Los jugadores la descifran usando la tabla Morse del dossier (Sección 2) e introducen la palabra resultante en mayúsculas.</p>
+    <h3>Solución por equipo</h3>
+    <div class="sol-grid">
+      <div class="sol-card"><div class="sol-team color-alfa">ALFA</div><div class="sol-code">OMEGA</div></div>
+      <div class="sol-card"><div class="sol-team color-beta">BETA</div><div class="sol-code">ALERT</div></div>
+      <div class="sol-card"><div class="sol-team color-gamma">GAMMA</div><div class="sol-code">ABORT</div></div>
+      <div class="sol-card"><div class="sol-team color-delta">DELTA</div><div class="sol-code">SIGMA</div></div>
+    </div>
+    <div class="alerta">⚙ Parámetro de velocidad: <code>UNIT=0.25</code> en el JS. Si el audio resulta demasiado rápido para el grupo, editar a <code>UNIT=0.35</code> y recargar.</div>
+    <div class="pistas">
+      <div class="pista-row"><span class="pista-label">PISTA 1:</span> "La tabla Morse está en la Sección 2 del dossier. Punto = pitido corto, raya = pitido largo."</div>
+      <div class="pista-row"><span class="pista-label">PISTA 2:</span> "La palabra tiene 5 letras. Podéis repetir la transmisión cuantas veces necesitéis con el botón de repetición."</div>
+      <div class="pista-row"><span class="pista-label">PISTA 3 (ALFA):</span> "La primera letra son tres rayas: O. La segunda es raya-raya: M." [Adaptar para cada equipo según su palabra.]</div>
+    </div>
+    <p><strong>Errores frecuentes:</strong> Confundir punto y raya. No separar bien las letras (pausa entre letras = más larga que pausa entre símbolos). Comprobar que el volumen del dispositivo está al máximo.</p>
+    <p><strong>Reinicio:</strong> Recargar página o pulsar botón "REPETIR TRANSMISIÓN".</p>
+  </div>
+</div>
+
+<!-- P3 -->
+<div class="prueba-block">
+  <div class="prueba-header"><span class="prueba-title">P3 — MONITORIZACIÓN</span><span class="prueba-badge">Tabla de sensores · 4 dígitos</span></div>
+  <div class="prueba-body">
+    <h3>Mecánica</h3>
+    <p>Tabla de 14 sensores (S-01 a S-14) con LECTURA y LÍMITE. Un sensor está en alarma si su LECTURA supera su LÍMITE. El código = último dígito de la LECTURA de cada sensor en alarma, en el mismo orden que aparecen en la tabla. El último dígito de cada LECTURA aparece en negrita para facilitar su localización.</p>
+    <h3>Solución por equipo</h3>
+    <div class="sol-grid">
+      <div class="sol-card"><div class="sol-team color-alfa">ALFA</div><div class="sol-code">4851</div><div class="sol-detail">S-03(724&gt;700→<b>4</b>) S-07(918&gt;900→<b>8</b>) S-10(485&gt;450→<b>5</b>) S-12(561&gt;550→<b>1</b>)</div></div>
+      <div class="sol-card"><div class="sol-team color-beta">BETA</div><div class="sol-code">9623</div><div class="sol-detail">S-02(859&gt;800→<b>9</b>) S-05(716&gt;700→<b>6</b>) S-08(382&gt;350→<b>2</b>) S-11(623&gt;600→<b>3</b>)</div></div>
+      <div class="sol-card"><div class="sol-team color-gamma">GAMMA</div><div class="sol-code">7140</div><div class="sol-detail">S-03(817&gt;800→<b>7</b>) S-06(581&gt;550→<b>1</b>) S-09(374&gt;350→<b>4</b>) S-13(810&gt;800→<b>0</b>)</div></div>
+      <div class="sol-card"><div class="sol-team color-delta">DELTA</div><div class="sol-code">3076</div><div class="sol-detail">S-08(823&gt;800→<b>3</b>) S-12(790&gt;750→<b>0</b>) S-14(617&gt;600→<b>7</b>) S-13(936&gt;900→<b>6</b>)</div></div>
+    </div>
+    <div class="pistas">
+      <div class="pista-row"><span class="pista-label">PISTA 1:</span> "Compara LECTURA con LÍMITE. Algunos sensores han superado su umbral."</div>
+      <div class="pista-row"><span class="pista-label">PISTA 2:</span> "Solo 4 de los 14 sensores están en alarma (LECTURA &gt; LÍMITE). Anota cuáles son, en el orden en que aparecen."</div>
+      <div class="pista-row"><span class="pista-label">PISTA 3:</span> "Una vez identificados los 4 sensores en alarma (en orden de tabla), el dígito de cada uno es el último número de su LECTURA (aparece en negrita)."</div>
+    </div>
+    <p><strong>Errores frecuentes:</strong> Considerar alarma cuando LECTURA = LÍMITE (no es alarma, debe superarlo). Tomar el primer dígito en vez del último.</p>
+    <p><strong>Reinicio:</strong> Borrar el campo de entrada. Sin cambio en la tabla (es estática).</p>
+  </div>
+</div>
+
+<!-- P4 -->
+<div class="prueba-block">
+  <div class="prueba-header"><span class="prueba-title">P4 — MÁSCARA</span><span class="prueba-badge">Overlay físico A5 sobre grid A3 · 4 letras</span></div>
+  <div class="prueba-body">
+    <h3>Mecánica</h3>
+    <p>PARTE FÍSICA: Cuadrícula de caracteres impresa en A3 (pegada en pared). Plantilla A5 con 4 ventanas circulares recortadas y 4 marcas de alineación (⊕⊗⊖⊙). Al colocar la plantilla correctamente sobre la cuadrícula, las ventanas revelan las 4 letras de la palabra clave. PARTE DIGITAL: introducir la palabra en el formulario HTML.</p>
+    <h3>Solución por equipo</h3>
+    <div class="sol-grid">
+      <div class="sol-card"><div class="sol-team color-alfa">ALFA</div><div class="sol-code">DARK</div></div>
+      <div class="sol-card"><div class="sol-team color-beta">BETA</div><div class="sol-code">MESH</div></div>
+      <div class="sol-card"><div class="sol-team color-gamma">GAMMA</div><div class="sol-code">FLUX</div></div>
+      <div class="sol-card"><div class="sol-team color-delta">DELTA</div><div class="sol-code">LOCK</div></div>
+    </div>
+    <div class="pistas">
+      <div class="pista-row"><span class="pista-label">PISTA 1:</span> "La plantilla tiene 4 marcas de alineación que deben coincidir exactamente con los mismos símbolos en la cuadrícula grande."</div>
+      <div class="pista-row"><span class="pista-label">PISTA 2:</span> "Busca en la cuadrícula las 4 marcas (⊕⊗⊖⊙) en el mismo patrón que en la plantilla. Cuando coincidan, las 4 ventanas circulares mostrarán letras."</div>
+      <div class="pista-row"><span class="pista-label">PISTA 3:</span> "Lee las letras que aparecen en las ventanas de izquierda a derecha, de arriba a abajo."</div>
+    </div>
+    <p><strong>Errores frecuentes:</strong> Rotar la plantilla. No alinear exactamente los 4 símbolos de referencia. Confundir ⊕ con ⊗.</p>
+    <p><strong>Verificación GM:</strong> Si el overlay está bien colocado, las marcas ⊕⊗⊖⊙ de la plantilla coinciden en posición y orientación con los mismos caracteres de la cuadrícula A3.</p>
+    <p><strong>Reinicio:</strong> Borrar el campo. La parte física no cambia.</p>
+  </div>
+</div>
+
+<!-- P5 -->
+<div class="prueba-block">
+  <div class="prueba-header"><span class="prueba-title">P5 — ESPECTRAL</span><span class="prueba-badge">Cancelación de señales de color · 4 caracteres</span></div>
+  <div class="prueba-body">
+    <h3>Mecánica</h3>
+    <p>4 operaciones, cada una con 2 círculos de color con su nombre de señal (OLIVA, NARANJA, GRANATE, OCRE, etc.). Identificar el componente de frecuencia compartido en cada pareja, cancelarlo (operación ⊗), y buscar el resultado en la tabla de señales del dossier (Sección 5). Los círculos muestran el nombre del color de señal, no notación de componentes.</p>
+    <h3>Solución por equipo</h3>
+    <div class="sol-grid">
+      <div class="sol-card"><div class="sol-team color-alfa">ALFA</div><div class="sol-code">7X03</div><div class="sol-detail">OP1→7 · OP2→X · OP3→0 · OP4→3</div></div>
+      <div class="sol-card"><div class="sol-team color-beta">BETA</div><div class="sol-code">9K21</div><div class="sol-detail">OP1→9 · OP2→K · OP3→2 · OP4→1</div></div>
+      <div class="sol-card"><div class="sol-team color-gamma">GAMMA</div><div class="sol-code">4M08</div><div class="sol-detail">OP1→4 · OP2→M · OP3→0 · OP4→8</div></div>
+      <div class="sol-card"><div class="sol-team color-delta">DELTA</div><div class="sol-code">5N29</div><div class="sol-detail">OP1→5 · OP2→N · OP3→2 · OP4→9</div></div>
+    </div>
+    <div class="pistas">
+      <div class="pista-row"><span class="pista-label">PISTA 1:</span> "Cada color de señal se compone de frecuencias primarias. La operación ⊗ cancela la frecuencia que comparten los dos colores."</div>
+      <div class="pista-row"><span class="pista-label">PISTA 2:</span> "Usad la tabla del dossier para ver qué frecuencias compone cada color de señal. El resultado de la cancelación es la frecuencia que queda."</div>
+      <div class="pista-row"><span class="pista-label">PISTA 3:</span> [Dar directamente el resultado de la operación problemática que bloquea al equipo.]</div>
+    </div>
+    <p><strong>Errores frecuentes:</strong> No usar la tabla de señales del dossier. Confundir qué componente se cancela. El código puede contener letras (no solo números).</p>
+    <p><strong>Reinicio:</strong> Borrar el campo de entrada.</p>
+  </div>
+</div>
+
+<!-- P6 -->
+<div class="prueba-block">
+  <div class="prueba-header"><span class="prueba-title">P6 — TRAZADO</span><span class="prueba-badge">Recorrido Dr. Navarro · 4 dígitos</span></div>
+  <div class="prueba-body">
+    <h3>Mecánica</h3>
+    <p>Cuadrícula 10×10 física (columnas A–J izquierda a derecha, filas 1–10 arriba a abajo). Texto narrativo en HTML con el recorrido del Dr. Navarro usando direcciones cardinales absolutas (Norte, Sur, Este, Oeste). Cada vez que el texto indica una parada (en negrita), anotar el valor de esa casilla en la cuadrícula. Los 4 valores = código.</p>
+    <h3>Solución por equipo</h3>
+    <div class="sol-grid">
+      <div class="sol-card"><div class="sol-team color-alfa">ALFA</div><div class="sol-code">5927</div><div class="sol-detail">Inicio G7 Norte · E4=5 · B8=9 · H6=2 · D2=7</div></div>
+      <div class="sol-card"><div class="sol-team color-beta">BETA</div><div class="sol-code">3814</div><div class="sol-detail">Inicio E2 Oeste · C5=3 · G3=8 · A9=1 · F7=4</div></div>
+      <div class="sol-card"><div class="sol-team color-gamma">GAMMA</div><div class="sol-code">6043</div><div class="sol-detail">Inicio H3 Sur · H8=6 · C6=0 · J3=4 · F9=3</div></div>
+      <div class="sol-card"><div class="sol-team color-delta">DELTA</div><div class="sol-code">2358</div><div class="sol-detail">Inicio F2 Sur · C5=2 · G3=3 · E8=5 · H6=8</div></div>
+    </div>
+    <div class="pistas">
+      <div class="pista-row"><span class="pista-label">PISTA 1:</span> "Las direcciones son cardinales absolutas: Norte = filas decrecientes (hacia arriba en la cuadrícula), Sur = filas crecientes, Este = columnas A hacia J, Oeste = columnas J hacia A. Dibuja el recorrido paso a paso."</div>
+      <div class="pista-row"><span class="pista-label">PISTA 2:</span> "Hay exactamente 4 paradas indicadas en el texto (en negrita). Cada parada cae en una casilla con un número impreso."</div>
+      <div class="pista-row"><span class="pista-label">PISTA 3:</span> [Confirmar al equipo las coordenadas de las 4 paradas de su equipo.]</div>
+    </div>
+    <p><strong>Errores frecuentes:</strong> Confundir Norte/Sur con filas crecientes o decrecientes. Avanzar número de pasos incorrecto. Mezclar filas y columnas.</p>
+    <p><strong>Reinicio:</strong> Borrar el campo. El texto narrativo no cambia.</p>
+  </div>
+</div>
+
+<!-- P7 -->
+<div class="prueba-block">
+  <div class="prueba-header"><span class="prueba-title">P7 — SECUENCIA (MASTERMIND)</span><span class="prueba-badge">5 procesos de colores · deducción</span></div>
+  <div class="prueba-body">
+    <h3>Mecánica</h3>
+    <p>Interfaz estilo Mastermind con 5 procesos (KERNEL verde, CIPHER rojo, NEXUS azul, VAULT dorado, GHOST morado). Probar secuencias y recibir feedback: cuadrado verde = posición correcta, amarillo = proceso desplazado. El código se revela automáticamente al resolverlo.</p>
+    <h3>Solución secreta por equipo</h3>
+    <div class="sol-grid">
+      <div class="sol-card"><div class="sol-team color-alfa">ALFA</div><div class="sol-code">2619</div><div class="sol-detail">NEXUS · KERNEL · GHOST · VAULT · CIPHER</div></div>
+      <div class="sol-card"><div class="sol-team color-beta">BETA</div><div class="sol-code">4753</div><div class="sol-detail">VAULT · CIPHER · KERNEL · GHOST · NEXUS</div></div>
+      <div class="sol-card"><div class="sol-team color-gamma">GAMMA</div><div class="sol-code">8302</div><div class="sol-detail">GHOST · NEXUS · CIPHER · KERNEL · VAULT</div></div>
+      <div class="sol-card"><div class="sol-team color-delta">DELTA</div><div class="sol-code">1485</div><div class="sol-detail">CIPHER · VAULT · NEXUS · GHOST · KERNEL</div></div>
+    </div>
+    <div class="pistas">
+      <div class="pista-row"><span class="pista-label">PISTA 1:</span> "Cuadrado verde = ese proceso en esa posición exacta es correcto. Cuadrado amarillo = ese proceso existe en la secuencia pero en otra posición."</div>
+      <div class="pista-row"><span class="pista-label">PISTA 2:</span> "Empezad con un orden cualquiera para obtener información. Con 2–3 intentos bien analizados podéis reducir mucho las posibilidades."</div>
+      <div class="pista-row"><span class="pista-label">PISTA 3:</span> [Si llevan más de 8 intentos, dar la posición de 1 proceso correcto.]</div>
+    </div>
+    <p><strong>Errores frecuentes:</strong> No anotar los intentos anteriores. Cambiar varias posiciones a la vez sin analizar el feedback previo.</p>
+    <p><strong>Reinicio:</strong> Recargar la página.</p>
+  </div>
+</div>
+
+<!-- P8 -->
+<div class="prueba-block">
+  <div class="prueba-header"><span class="prueba-title">P8 — INTERFERENCIA</span><span class="prueba-badge">Intersección de líneas con regla · 4 dígitos</span></div>
+  <div class="prueba-body">
+    <h3>Mecánica</h3>
+    <p>PARTE FÍSICA: Hoja A5 con nube de pares de símbolos y números distribuidos. PARTE DIGITAL: el HTML muestra 4 pares de símbolos en notación SÍM² × SÍM² para indicar que cada símbolo aparece dos veces en la hoja. Con una regla, trazar líneas entre cada par de símbolos idénticos; el número en la intersección física de cada pareja de líneas es el dígito del código.</p>
+    <h3>Solución por equipo</h3>
+    <div class="sol-grid">
+      <div class="sol-card"><div class="sol-team color-alfa">ALFA</div><div class="sol-code">7284</div><div class="sol-detail">⊕∩★=7 · ◆∩▲=2 · ⊗∩✦=8 · ❖∩▼=4</div></div>
+      <div class="sol-card"><div class="sol-team color-beta">BETA</div><div class="sol-code">5391</div><div class="sol-detail">⊕∩★=5 · ◆∩▲=3 · ⊗∩✦=9 · ❖∩▼=1</div></div>
+      <div class="sol-card"><div class="sol-team color-gamma">GAMMA</div><div class="sol-code">6047</div><div class="sol-detail">⊕∩★=6 · ◆∩▲=0 · ⊗∩✦=4 · ❖∩▼=7</div></div>
+      <div class="sol-card"><div class="sol-team color-delta">DELTA</div><div class="sol-code">3916</div><div class="sol-detail">⊕∩★=3 · ◆∩▲=9 · ⊗∩✦=1 · ❖∩▼=6</div></div>
+    </div>
+    <div class="pistas">
+      <div class="pista-row"><span class="pista-label">PISTA 1:</span> "Cada par de símbolos iguales (el superíndice ² indica que hay dos de ese símbolo en la hoja) debe unirse con una línea recta usando la regla."</div>
+      <div class="pista-row"><span class="pista-label">PISTA 2:</span> "El HTML os dice exactamente qué 4 intersecciones necesitáis: ⊕ × ★ da el dígito 1, ◆ × ▲ el 2, ⊗ × ✦ el 3, y ❖ × ▼ el 4."</div>
+      <div class="pista-row"><span class="pista-label">PISTA 3:</span> "Aseguraos de trazar la línea de borde a borde del papel, no solo entre los dos símbolos. Las intersecciones están entre pares de líneas distintos."</div>
+    </div>
+    <p><strong>Errores frecuentes:</strong> Trazar líneas curvas. No extender la línea suficiente para que cruce a la otra. Confundir el orden de los dígitos.</p>
+    <p><strong>Reinicio:</strong> Nueva hoja A5 si la anterior está muy marcada. El HTML no cambia.</p>
+  </div>
+</div>
+
+<!-- P9 -->
+<div class="prueba-block">
+  <div class="prueba-header"><span class="prueba-title">P9 — NEUTRALIZACIÓN FINAL</span><span class="prueba-badge">Activación de 4 nodos en orden · código auth final</span></div>
+  <div class="prueba-body">
+    <h3>Mecánica</h3>
+    <p>La pantalla muestra 4 nodos (INTERFERENCIA, ESPECTRAL, MONITORIZACIÓN, SECUENCIA). Los jugadores deben activarlos en el orden correcto introduciendo el código de cada uno. El orden correcto es: <strong>1.º INTERFERENCIA (P8) → 2.º ESPECTRAL (P5) → 3.º MONITORIZACIÓN (P3) → 4.º SECUENCIA (P7)</strong>. Si se introduce un código incorrecto en cualquier paso, toda la secuencia se reinicia al paso 1 y los nodos vuelven a estado inactivo.</p>
+    <div class="alerta">⚠ La pista del orden de activación está al final del texto narrativo de P6. El jugador debe haberlo leído para saberlo. Si lo perdió, esta es la pista de nivel 3.</div>
+    <h3>Códigos de activación por nodo y equipo</h3>
+    <table>
+      <tr><th>NODO (orden)</th><th>PRUEBA ORIGEN</th><th class="badge-alfa">ALFA</th><th class="badge-beta">BETA</th><th class="badge-gamma">GAMMA</th><th class="badge-delta">DELTA</th></tr>
+      <tr><td>1.º INTERFERENCIA</td><td>P8</td><td>7284</td><td>5391</td><td>6047</td><td>3916</td></tr>
+      <tr><td>2.º ESPECTRAL</td><td>P5</td><td>7X03</td><td>9K21</td><td>4M08</td><td>5N29</td></tr>
+      <tr><td>3.º MONITORIZACIÓN</td><td>P3</td><td>4851</td><td>9623</td><td>7140</td><td>3076</td></tr>
+      <tr><td>4.º SECUENCIA</td><td>P7</td><td>2619</td><td>4753</td><td>8302</td><td>1485</td></tr>
+    </table>
+    <h3>Código de autorización final por equipo</h3>
+    <div class="sol-grid">
+      <div class="sol-card"><div class="sol-team color-alfa">ALFA</div><div class="sol-code" style="font-size:13px;letter-spacing:2px">AION-ALFA-2847</div></div>
+      <div class="sol-card"><div class="sol-team color-beta">BETA</div><div class="sol-code" style="font-size:13px;letter-spacing:2px">AION-BETA-5193</div></div>
+      <div class="sol-card"><div class="sol-team color-gamma">GAMMA</div><div class="sol-code" style="font-size:13px;letter-spacing:2px">AION-GAMMA-6720</div></div>
+      <div class="sol-card"><div class="sol-team color-delta">DELTA</div><div class="sol-code" style="font-size:13px;letter-spacing:2px">AION-DELTA-4031</div></div>
+    </div>
+    <div class="pistas">
+      <div class="pista-row"><span class="pista-label">PISTA 1:</span> "Tenéis que activar los 4 nodos en el orden correcto. El orden está en el texto narrativo del Dr. Navarro (P6)."</div>
+      <div class="pista-row"><span class="pista-label">PISTA 2:</span> "El primer nodo es INTERFERENCIA (usad el código de la prueba de la regla). El último es SECUENCIA (usad el código del Mastermind)."</div>
+      <div class="pista-row"><span class="pista-label">PISTA 3 (solución directa):</span> "El orden es: código P8 → código P5 → código P3 → código P7."</div>
+    </div>
+    <p><strong>⚠ ATENCIÓN GM:</strong> Si un equipo no recuerda algún código de prueba anterior, pueden volver a la página de esa prueba y reintroducir la solución. El código se muestra en pantalla al validar.</p>
+    <p><strong>Al completar P9:</strong> La página muestra el código de autorización final (AION-[EQUIPO]-[NÚMERO]). Dirigirse al TERMINAL CENTRAL.</p>
+  </div>
+</div>
+
+<!-- ══════════ TERMINAL ══════════ -->
+<h2>6 · Terminal Central (Pantalla Grande)</h2>
+<p>Archivo: <code>terminal.html</code> (en la raíz de la carpeta AION, no en subcarpeta de equipo). Abrir en dispositivo central o proyectado antes del inicio del juego. No cerrar durante la partida.</p>
+<p>El terminal tiene dos fases: (1) pantalla de boot con botón de inicio, (2) pantalla de entrada con selector de CÉLULA y campo de código de 4 dígitos.</p>
+<table>
+  <tr><th>CAMPO</th><th>DESCRIPCIÓN</th><th>VALORES VÁLIDOS</th></tr>
+  <tr><td>CÉLULA</td><td>4 botones — el equipo selecciona el suyo</td><td>ALFA / BETA / GAMMA / DELTA</td></tr>
+  <tr><td>CÓDIGO DE ACCESO</td><td>Campo de 4 dígitos</td><td>ALFA=2847 · BETA=5193 · GAMMA=6720 · DELTA=4031</td></tr>
+</table>
+<p>El primer equipo en seleccionar su CÉLULA e introducir su código de 4 dígitos correctamente gana. La pantalla muestra animación de victoria con el color del equipo ganador.</p>
+
+<!-- ══════════ PROTOCOLO GM ══════════ -->
+<h2>7 · Protocolo Operativo GM</h2>
+<h3>Antes del juego</h3>
+<ul>
+  <li>Arrancar servidor: <code>python3 -m http.server 8080</code> en la carpeta AION.</li>
+  <li>Comprobar IP local (<code>ipconfig</code> en Windows / <code>ifconfig</code> en Mac/Linux) y generar QR de P1 por equipo con esa IP.</li>
+  <li>Colocar los 28 QR (7 zonas × 4 equipos) en las ubicaciones físicas definidas en la Sección 3.</li>
+  <li>Abrir <code>presentacion.html</code> en el dispositivo central (intro animada de AION).</li>
+  <li>Abrir <code>terminal.html</code> en el dispositivo central (no cerrar durante el juego).</li>
+  <li>Verificar que todos los móviles están en la misma red WiFi.</li>
+  <li>Comprobar que los materiales físicos están en sus zonas: grids A3 (P4), overlays A5 (P4), hojas P8, cuadrículas P6.</li>
+</ul>
+<h3>Durante el juego</h3>
+<ul>
+  <li>Gestionar pistas según los 3 niveles definidos por prueba. No dar pistas de nivel 3 antes de 5 min de bloqueo.</li>
+  <li>Vigilar si algún equipo intenta navegar manualmente a URLs: los archivos p2–p9 han sido renombrados, no existirán.</li>
+  <li>Si un equipo tiene un fallo técnico (audio no suena, página no carga), comprobar: volumen, misma red WiFi, recargar página.</li>
+  <li>Anotar tiempos por equipo en cada prueba para el debriefing.</li>
+</ul>
+<h3>Contingencias</h3>
+<ul>
+  <li><strong>Servidor caído:</strong> Reiniciar <code>python3 -m http.server 8080</code>. Las páginas no guardan estado en servidor, solo en el navegador del jugador.</li>
+  <li><strong>P7 bloqueado &gt;15 min:</strong> Dar la secuencia correcta directamente (pista 3 es la solución).</li>
+  <li><strong>P4 overlay no encaja:</strong> Verificar que la impresión es al 100% (sin ajuste de márgenes). Si hay desviación, dar las 4 letras directamente.</li>
+  <li><strong>P9 reinicio involuntario:</strong> Si el equipo introduce un código incorrecto, la secuencia vuelve al paso 1. Deben volver a introducir desde INTERFERENCIA. No hay penalización de tiempo adicional.</li>
+  <li><strong>Empate en terminal:</strong> El GM decide basándose en los tiempos registrados.</li>
+</ul>
+
+<!-- ══════════ PENDIENTES ══════════ -->
+<h2>8 · Pendientes Antes del Evento</h2>
+<ul>
+  <li><strong>Definir ubicaciones físicas de QR:</strong> Completar la tabla de la Sección 3 con la ubicación exacta de cada QR en el espacio de juego (columna "UBICACIÓN FÍSICA").</li>
+  <li><strong>Generar los 28 QR:</strong> 4 equipos × 7 pruebas. Cada QR apunta a la URL del equipo correspondiente (p.ej. <code>http://[IP]:8080/alfa/p2vk3m.html</code>). Los 4 QR de la misma prueba se colocan en la misma zona física.</li>
+  <li><strong>Confirmar IP del servidor:</strong> Necesaria para generar los QR definitivos. Ejecutar <code>python3 -m http.server 8080</code> y anotar la IP local.</li>
+  <li><strong>Verificar impresión P4:</strong> Comprobar que el overlay A5 encaja con el grid A3 al imprimir exactamente al 100% sin ajuste de márgenes.</li>
+  <li><strong>Ajustar velocidad P2 si necesario:</strong> Editar <code>UNIT=0.25</code> a <code>UNIT=0.35</code> en p2vk3m.html de cada equipo si el audio resulta demasiado rápido.</li>
+  <li><strong>Probar tiempo real:</strong> Estimado 90–120 min. Recomendable hacer prueba parcial de P6 y P9 que son las más susceptibles a bloqueo.</li>
+</ul>
+
+<div class="warning" style="margin-top:20px">DOCUMENTO CONFIDENCIAL — OPERACIÓN AION — SOLO GM — NO COMPARTIR</div>
+
+</body>
+</html>

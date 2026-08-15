@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>AION // NODO-A9 — ACTIVACIÓN</title>
+<style>*{margin:0;padding:0;box-sizing:border-box}
+body{background:#ffffff;color:#006644;font-family:'Courier New',Courier,monospace;font-size:13px;line-height:1.6;padding:20px;min-height:100vh;transition:background .3s}
+body.flash-err{background:#2a0000}
+.hdr{border:1px solid #ccddcc;padding:11px 15px;margin-bottom:12px;background:#f0f4f2}
+.ht{color:#006644;font-size:12px;letter-spacing:3px;text-transform:uppercase}
+.hs{color:#336655;font-size:10px;margin-top:3px}
+.sbar{display:flex;justify-content:space-between;background:#f0f4f2;border:1px solid #ccddcc;padding:6px 15px;font-size:10px;color:#336655;margin-bottom:12px}
+.alrt{background:#fff3f0;border:1px solid #ff4400;color:#ff6622;padding:9px 15px;margin-bottom:14px;font-size:11px}
+.step-info{text-align:center;font-size:11px;letter-spacing:2px;color:#336655;margin-bottom:14px}
+.step-info span{color:#006644;font-size:14px;font-weight:bold}
+.nodes{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:16px}
+.node{border:2px solid #ccddcc;background:#f8faf9;padding:14px 10px;text-align:center;border-radius:4px;transition:all .4s}
+.node.active{animation:pulse-node 1.5s ease-in-out infinite}
+.node.done{border-width:2px}
+.node.inactive{opacity:.35}
+.node-name{font-size:10px;letter-spacing:2px;text-transform:uppercase;margin-bottom:6px}
+.node-icon{font-size:28px;margin-bottom:6px}
+.node-status{font-size:9px;letter-spacing:1px}
+@keyframes pulse-node{0%,100%{box-shadow:0 0 0 0 rgba(255,255,255,.1)}50%{box-shadow:0 0 12px 4px rgba(255,255,255,.15)}}
+.inp-area{background:#f8faf9;border:1px solid #ccddcc;padding:14px;margin-bottom:12px}
+.inp-title{font-size:9px;letter-spacing:2px;color:#336655;margin-bottom:10px;text-transform:uppercase}
+input{background:#ffffff;border:1px solid #00ff88;color:#006644;font-family:'Courier New',Courier,monospace;font-size:17px;padding:8px 12px;letter-spacing:6px;outline:none;text-transform:uppercase;width:110px;text-align:center}
+input:focus{border-color:#004433;box-shadow:0 0 10px rgba(0,255,136,.3)}
+button{background:#e8f4ee;border:1px solid #00ff88;color:#006644;font-family:'Courier New',Courier,monospace;font-size:11px;padding:8px 16px;cursor:pointer;letter-spacing:2px;text-transform:uppercase}
+button:hover{background:#005533}
+.feedback{margin-top:10px;font-size:11px;min-height:18px;letter-spacing:1px}
+.feedback.ok{color:#006644}
+.feedback.err{color:#ff4444}
+.final{display:none;text-align:center;padding:20px 10px;border:1px solid #00ff88;background:#e8f4ee;margin-top:14px}
+.final-title{font-size:11px;letter-spacing:3px;color:#336655;margin-bottom:10px}
+.final-code{font-size:26px;letter-spacing:8px;font-weight:bold;color:#006644;margin-bottom:10px}
+.final-msg{font-size:11px;color:#557755;letter-spacing:2px}
+.blink{animation:blink 1s step-end infinite}@keyframes blink{50%{opacity:0}}
+.foot{margin-top:20px;border-top:1px solid #1a3a2a;padding-top:6px;font-size:9px;color:#aaccbb;text-align:center;letter-spacing:2px}
+.irow{display:flex;align-items:center;gap:10px;margin-top:4px}
+.pr{color:#006644;font-size:14px}
+.reset-info{font-size:9px;color:#558866;margin-top:8px;text-align:center;letter-spacing:1px}</style>
+</head>
+<body>
+<div class="hdr"><div class="ht">AION v4.2.1 — PROTOCOLO DE NEUTRALIZACIÓN</div><div class="hs">NODO-A9 // ACTIVACIÓN DE SECUENCIA // CÉLULA GAMMA</div></div>
+<div class="sbar"><span>NODOS: 4</span><span>MÉTODO: SECUENCIA ORDENADA</span><span>PROTOCOLO Ω: CRÍTICO</span></div>
+<div class="alrt">PROTOCOLO Ω EN FASE TERMINAL. Activa los cuatro nodos en el orden correcto. Un código incorrecto reiniciará toda la secuencia.</div>
+<div class="step-info">PASO <span id="stepnum">1</span> / 4 &nbsp;·&nbsp; ACTIVANDO: <span id="stepname">INTERFERENCIA</span></div>
+<div class="nodes">
+<div class="node inactive" id="node0" style="border-color:#aaccbb">
+<div class="node-name" id="nname0" style="color:#558866">INTERFERENCIA</div>
+<div class="node-icon" id="nicon0" style="color:#558866">⚡</div>
+<div class="node-status" id="nstat0" style="color:#558866">INACTIVO</div>
+</div>
+<div class="node inactive" id="node1" style="border-color:#aaccbb">
+<div class="node-name" id="nname1" style="color:#558866">ESPECTRAL</div>
+<div class="node-icon" id="nicon1" style="color:#558866">◈</div>
+<div class="node-status" id="nstat1" style="color:#558866">INACTIVO</div>
+</div>
+<div class="node inactive" id="node2" style="border-color:#aaccbb">
+<div class="node-name" id="nname2" style="color:#558866">MONITORIZACIÓN</div>
+<div class="node-icon" id="nicon2" style="color:#558866">▣</div>
+<div class="node-status" id="nstat2" style="color:#558866">INACTIVO</div>
+</div>
+<div class="node inactive" id="node3" style="border-color:#aaccbb">
+<div class="node-name" id="nname3" style="color:#558866">SECUENCIA</div>
+<div class="node-icon" id="nicon3" style="color:#558866">⚙</div>
+<div class="node-status" id="nstat3" style="color:#558866">INACTIVO</div>
+</div>
+</div>
+<div class="inp-area" id="inp-section">
+<div class="inp-title">INTRODUCE CÓDIGO DE ACTIVACIÓN:</div>
+<div class="irow"><span class="pr">&gt;_</span><input type="text" id="ci9" maxlength="4" placeholder="____" autocomplete="off" spellcheck="false"><button onclick="activate()">ACTIVAR</button></div>
+<div class="feedback" id="fb9"></div>
+<div class="reset-info">⚠ Código incorrecto = reinicio completo de la secuencia</div>
+</div>
+<div class="final" id="final">
+<div class="final-title">⬛⬛⬛ PROTOCOLO Ω NEUTRALIZADO ⬛⬛⬛</div>
+<div class="final-title" style="margin-bottom:14px">CÓDIGO DE AUTORIZACIÓN FINAL:</div>
+<div class="final-code" id="final-code"></div>
+<div class="final-msg" style="margin-top:14px">DIRÍGETE AL TERMINAL CENTRAL &nbsp; <span class="blink">█</span></div>
+</div>
+<div class="foot">AION CONTAINMENT // CELL-GAMMA // NODE-A9 // RESTRICTED</div>
+<script>
+const CODES=["6047","4M08","7140","8302"];
+const COLS=["#ff4444","#cc44ff","#4488ff","#00ff88"];
+const BGS=["#2a0000","#1a0033","#00002a","#003322"];
+const AUTH="AION-GAMMA-6720";
+let step=0;
+function render(){
+  document.getElementById("stepnum").textContent=(step+1);
+  document.getElementById("stepname").textContent=["INTERFERENCIA","ESPECTRAL","MONITORIZACIÓN","SECUENCIA"][step];
+  for(var i=0;i<4;i++){
+    var nd=document.getElementById("node"+i);
+    var nn=document.getElementById("nname"+i);
+    var ni=document.getElementById("nicon"+i);
+    var ns=document.getElementById("nstat"+i);
+    if(i<step){
+      nd.className="node done";
+      nd.style.borderColor=COLS[i]; nd.style.background=BGS[i];
+      nn.style.color=COLS[i]; ni.style.color=COLS[i];
+      ns.textContent="ACTIVADO ✓"; ns.style.color=COLS[i];
+    }else if(i===step){
+      nd.className="node active";
+      nd.style.borderColor=COLS[i]; nd.style.background=BGS[i];
+      nn.style.color=COLS[i]; ni.style.color=COLS[i];
+      ns.textContent="ESPERANDO CÓDIGO..."; ns.style.color=COLS[i];
+    }else{
+      nd.className="node inactive";
+      nd.style.borderColor="#1a3a2a"; nd.style.background="#060a08";
+      nn.style.color="#1a4a2a"; ni.style.color="#1a4a2a";
+      ns.textContent="INACTIVO"; ns.style.color="#1a4a2a";
+    }
+  }
+}
+function activate(){
+  var v=document.getElementById("ci9").value.trim().toUpperCase();
+  var fb=document.getElementById("fb9");
+  if(v===CODES[step]){
+    step++;
+    fb.className="feedback ok";
+    fb.textContent="NODO ACTIVADO. SIGUIENTE CÓDIGO.";
+    document.getElementById("ci9").value="";
+    render();
+    if(step===4){
+      setTimeout(function(){
+        document.getElementById("inp-section").style.display="none";
+        document.getElementById("final").style.display="block";
+        document.getElementById("final-code").textContent=AUTH;
+      },600);
+    }
+  }else{
+    step=0;
+    fb.className="feedback err";
+    fb.textContent="CÓDIGO INCORRECTO — SISTEMA RESETEADO.";
+    document.getElementById("ci9").value="";
+    document.body.classList.add("flash-err");
+    setTimeout(function(){
+      document.body.classList.remove("flash-err");
+      render();
+      fb.textContent="";
+    },1200);
+  }
+}
+document.getElementById("ci9").addEventListener("keypress",function(e){if(e.key==="Enter")activate();});
+render();
+
+</script>
+</body>
+</html>

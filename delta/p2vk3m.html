@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>AION // NODO-D2 — SEÑAL</title>
+<style>*{margin:0;padding:0;box-sizing:border-box}
+body{background:#ffffff;color:#006644;font-family:'Courier New',Courier,monospace;font-size:16px;line-height:1.75;padding:18px;min-height:100vh}
+.hdr{border:1px solid #ccddcc;padding:11px 15px;margin-bottom:12px;background:#f0f4f2}
+.ht{color:#006644;font-size:15px;letter-spacing:2px;text-transform:uppercase}
+.hs{color:#336655;font-size:12px;margin-top:4px}
+.sbar{display:flex;justify-content:space-between;background:#f0f4f2;border:1px solid #ccddcc;padding:8px 15px;font-size:12px;color:#336655;margin-bottom:12px;flex-wrap:wrap;gap:3px}
+.alrt{background:#fff3f0;border:1px solid #ff4400;color:#ff6622;padding:13px 15px;margin-bottom:14px;font-size:14px}
+.ins{background:#f0f4f2;border-left:3px solid #00ff88;padding:13px 15px;margin-bottom:14px;font-size:14px;color:#004433}
+.stit{color:#006644;font-size:13px;letter-spacing:2px;text-transform:uppercase;border-bottom:1px solid #ccddcc;padding-bottom:5px;margin:0 0 10px}
+.panel{background:#f8faf9;border:1px solid #ccddcc;padding:16px;margin-bottom:14px}
+#playbtn{background:#e8f4ee;border:2px solid #00ff88;color:#006644;font-family:'Courier New',Courier,monospace;font-size:13px;padding:12px 28px;cursor:pointer;letter-spacing:3px;text-transform:uppercase;display:block;width:100%;margin-bottom:12px}
+#playbtn:hover{background:#005533}
+#playbtn:disabled{border-color:#558866;color:#558866;cursor:not-allowed}
+.indicator{height:40px;display:flex;align-items:center;justify-content:center;gap:4px;margin-bottom:10px}
+.bar{width:4px;background:#1a3a2a;border-radius:2px;height:8px}
+.bar.active{background:#00ff88}
+.sigstatus{font-size:10px;letter-spacing:2px;color:#336655;margin-bottom:8px;min-height:16px;text-align:center}
+.progress{height:3px;background:#e8f4ee;border:1px solid #ccddcc;margin-bottom:12px}
+.progress-fill{height:100%;background:#00ff88;width:0%}
+.counter{font-size:9px;color:#1a6a3a;letter-spacing:2px;text-align:center;margin-bottom:10px;min-height:14px}
+.replay{background:#f0f4f2;border:1px solid #ccddcc;color:#336655;font-family:'Courier New',Courier,monospace;font-size:10px;padding:5px 14px;cursor:pointer;letter-spacing:2px;display:none;width:100%;margin-bottom:12px}
+.replay:hover{color:#006644;border-color:#336655}
+.sep{border-top:1px solid #1a3a2a;margin:14px 0}
+input{background:#ffffff;border:1px solid #00ff88;color:#006644;font-family:'Courier New',Courier,monospace;font-size:18px;padding:11px 12px;letter-spacing:3px;outline:none;text-transform:uppercase;width:100%;max-width:220px}
+input:focus{border-color:#004433;box-shadow:0 0 8px rgba(0,255,136,.3)}
+button.vbtn{background:#e8f4ee;border:1px solid #00ff88;color:#006644;font-family:'Courier New',Courier,monospace;font-size:14px;padding:12px 20px;cursor:pointer;letter-spacing:2px;text-transform:uppercase;min-height:44px}
+button.vbtn:hover{background:#005533}
+.res{margin-top:14px;padding:12px 16px;font-size:14px;display:none;line-height:2}
+.ok{background:#e8f4ee;border:1px solid #00ff88;color:#006644;display:block}
+.er{background:#fff3f0;border:1px solid #ff4400;color:#ff4400;display:block}
+.blink{animation:blink 1s step-end infinite}
+@keyframes blink{50%{opacity:0}}
+.irow{display:flex;align-items:center;gap:9px;margin-top:7px}
+.ilbl{color:#336655;font-size:14px;margin-bottom:8px;letter-spacing:1px}
+.pr{color:#006644;font-size:14px}
+.foot{margin-top:20px;border-top:1px solid #1a3a2a;padding-top:6px;font-size:11px;color:#aaccbb;text-align:center;letter-spacing:2px}.probe-badge{display:block;text-align:center;font-size:clamp(1.5rem,6vw,2.4rem);font-weight:900;letter-spacing:.12em;padding:12px 8px 10px;margin-bottom:14px;text-transform:uppercase;border-bottom:2px solid currentColor;line-height:1.1}body{font-size:16px!important}@media(max-width:480px){.sbar{flex-direction:column;gap:2px}}</style>
+</head>
+<body>
+<div class="hdr"><div class="ht">AION v4.2.1 — INTERCEPCIÓN DE SEÑAL</div><div class="hs">NODO-D2 // TRANSMISIÓN CIFRADA // CÉLULA DELTA</div></div>
+<div class="sbar"><span>CANAL: CLASIFICADO</span><span>CIFRADO: ANALÓGICO</span><span>PROTOCOLO Ω: ACTIVO</span></div>
+<div class="probe-badge" style="color:#884400">PULSO</div>
+<div class="alrt">Transmisión interceptada en canal analógico. Duración de señal: ~6.7 segundos.</div>
+<div class="ins">Decodifica la transmisión usando la tabla Morse del dossier (Sección 2). Introduce la palabra obtenida para continuar.</div>
+<div class="panel">
+<div class="stit">RECEPTOR DE SEÑAL</div>
+<div class="indicator"><div class="bar"></div><div class="bar"></div><div class="bar"></div><div class="bar"></div><div class="bar"></div><div class="bar"></div><div class="bar"></div><div class="bar"></div><div class="bar"></div><div class="bar"></div><div class="bar"></div><div class="bar"></div><div class="bar"></div><div class="bar"></div><div class="bar"></div><div class="bar"></div><div class="bar"></div><div class="bar"></div></div>
+<div class="sigstatus" id="sigstatus">EN ESPERA DE ACTIVACIÓN</div>
+<div class="progress"><div class="progress-fill" id="pfill"></div></div>
+<div class="counter" id="counter"></div>
+<button id="playbtn">▶ ACTIVAR RECEPTOR</button>
+<button class="replay" id="replaybtn">↺ REPETIR TRANSMISIÓN</button>
+</div>
+<div class="sep"></div>
+<div class="ilbl">PALABRA DECODIFICADA:</div>
+<div class="irow"><span class="pr">&gt;_</span><input type="text" id="ci2" maxlength="5" placeholder="_____" autocomplete="off" spellcheck="false"><button class="vbtn" onclick="chk2()">VALIDAR</button></div>
+<div class="res" id="rd2"></div>
+<div class="foot">AION CONTAINMENT // CELL-DELTA // NODE-D2 // CLASIFICADO</div>
+<script>
+const MORSE={A:'.-',B:'-...',C:'-.-.',D:'-..',E:'.',F:'..-.',G:'--.', H:'....',I:'..',J:'.---',K:'-.-',L:'.-..',M:'--',N:'-.',O:'---',P:'.--.',Q:'--.-',R:'.-.',S:'...',T:'-',U:'..-',V:'...-',W:'.--',X:'-..-',Y:'-.--',Z:'--..'};
+const WORD="SIGMA",CODE="SIGMA",UNIT=0.25,FREQ=660;
+let ctx=null,playing=false,replays=0,totalDur=0,startT=0,raf=null;
+const bars=Array.from(document.querySelectorAll('.bar'));
+const status=document.getElementById('sigstatus');
+const fill=document.getElementById('pfill');
+const counter=document.getElementById('counter');
+const replayBtn=document.getElementById('replaybtn');
+const playBtn=document.getElementById('playbtn');
+function initCtx(){if(!ctx)ctx=new(window.AudioContext||window.webkitAudioContext)();if(ctx.state==='suspended')ctx.resume();}
+function beep(dur,t){const o=ctx.createOscillator(),g=ctx.createGain();o.connect(g);g.connect(ctx.destination);o.type='sine';o.frequency.value=FREQ;const ak=0.008,rl=0.012;g.gain.setValueAtTime(0,t);g.gain.linearRampToValueAtTime(0.45,t+ak);g.gain.setValueAtTime(0.45,t+dur-rl);g.gain.linearRampToValueAtTime(0,t+dur);o.start(t);o.stop(t+dur);}
+function calcDur(w){let t=0;for(let i=0;i<w.length;i++){const c=MORSE[w[i]];for(let j=0;j<c.length;j++){t+=(c[j]==='.'?UNIT:UNIT*3)+UNIT;}t+=UNIT*2;}return t;}
+function playWord(){let t=ctx.currentTime+0.4;for(let i=0;i<WORD.length;i++){const c=MORSE[WORD[i]];for(let j=0;j<c.length;j++){const d=c[j]==='.'?UNIT:UNIT*3;beep(d,t);t+=d+UNIT;}t+=UNIT*2;}return t;}
+function animBars(on){bars.forEach(b=>{b.style.height=(on?(8+Math.random()*32):8)+'px';on?b.classList.add('active'):b.classList.remove('active');});}
+function onDone(){playing=false;status.textContent='TRANSMISIÓN COMPLETADA';status.style.color='#00ff88';fill.style.width='100%';animBars(false);replayBtn.style.display='block';playBtn.style.display='none';}
+function updateProg(){if(!playing)return;const el=ctx.currentTime-startT;const pct=Math.min(el/totalDur*100,100);fill.style.width=pct+'%';animBars(true);if(pct<100){raf=requestAnimationFrame(updateProg);}else{onDone();}}
+function startPlay(){initCtx();if(playing)return;playing=true;replays++;counter.textContent='TRANSMISIÓN '+replays;status.textContent='◉ SEÑAL ACTIVA — DECODIFICANDO...';status.style.color='#ffaa00';fill.style.width='0%';replayBtn.style.display='none';playBtn.disabled=true;totalDur=calcDur(WORD);startT=ctx.currentTime+0.4;playWord();raf=requestAnimationFrame(updateProg);setTimeout(onDone,(totalDur+0.6)*1000+100);}
+playBtn.addEventListener('click',startPlay);
+replayBtn.addEventListener('click',function(){playing=false;if(raf)cancelAnimationFrame(raf);playBtn.disabled=false;startPlay();});
+document.getElementById('ci2').addEventListener('keypress',function(e){if(e.key==='Enter')chk2();});
+function chk2(){var v=document.getElementById('ci2').value.trim().toUpperCase(),r=document.getElementById('rd2');if(v===CODE){r.className='res ok';r.innerHTML='&gt; PALABRA VALIDADA.<br>&gt; ACCESO AL SIGUIENTE NODO CONCEDIDO.<br>&gt; NODO SIGUIENTE: &gt; ZONA: BBQ<br>&gt; Donde el fuego reúne y el humo asciende. La brasa sabe tu destino.<br>&gt; ESCANEA EL QR DEL SECTOR INDICADO.<br>&gt; <span class=\'blink\'>&#9608;</span>';}else{r.className='res er';r.innerHTML='&gt; PALABRA INCORRECTA. Revisa la decodificación.';document.getElementById('ci2').value='';}}
+</script>
+</body>
+</html>

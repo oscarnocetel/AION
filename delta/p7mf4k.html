@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>AION // NODO-D7</title>
+<style>*{margin:0;padding:0;box-sizing:border-box}
+body{background:#ffffff;color:#006644;font-family:'Courier New',Courier,monospace;font-size:16px;line-height:1.75;padding:18px;min-height:100vh}
+.hdr{border:1px solid #ccddcc;padding:11px 15px;margin-bottom:12px;background:#f0f4f2}
+.ht{color:#006644;font-size:15px;letter-spacing:2px;text-transform:uppercase}
+.hs{color:#336655;font-size:12px;margin-top:4px}
+.sbar{display:flex;justify-content:space-between;background:#f0f4f2;border:1px solid #ccddcc;padding:8px 15px;font-size:12px;color:#336655;margin-bottom:12px;flex-wrap:wrap;gap:3px}
+.ins{background:#f0f4f2;border-left:3px solid #00ff88;padding:13px 15px;margin-bottom:14px;font-size:14px;color:#004433}
+.stit{color:#006644;font-size:13px;letter-spacing:2px;text-transform:uppercase;border-bottom:1px solid #ccddcc;padding-bottom:5px;margin:0 0 10px}
+.seq-row{display:flex;gap:8px;margin-bottom:6px}
+.seq-slot{flex:1;height:64px;border:2px solid #ccddcc;background:#f0f4f2;border-radius:4px;display:flex;flex-direction:column;align-items:center;justify-content:center;cursor:pointer;transition:all .15s;user-select:none}
+.seq-slot:hover{border-color:#336655}
+.seq-slot.filled{cursor:pointer}
+.seq-slot.filled:hover{opacity:.8}
+.slot-pos{font-size:9px;color:#336655;letter-spacing:1px;margin-bottom:2px}
+.slot-color{width:32px;height:32px;border-radius:3px;margin-bottom:3px}
+.slot-name{font-size:10px;font-weight:bold;letter-spacing:1px}
+.elem-row{display:flex;gap:8px;margin-bottom:14px}
+.elem-btn{flex:1;height:56px;border:2px solid transparent;border-radius:4px;display:flex;flex-direction:column;align-items:center;justify-content:center;cursor:pointer;transition:all .15s;user-select:none}
+.elem-btn.used{opacity:.2;cursor:not-allowed;filter:grayscale(80%)}
+.elem-btn:not(.used):hover{transform:translateY(-2px);filter:brightness(1.2)}
+.elem-color{width:28px;height:28px;border-radius:3px;margin-bottom:3px}
+.elem-name{font-size:10px;font-weight:bold;letter-spacing:1px}
+button.probar{background:#e8f4ee;border:1px solid #00ff88;color:#006644;font-family:'Courier New',Courier,monospace;font-size:11px;padding:8px 18px;cursor:pointer;letter-spacing:2px;text-transform:uppercase;width:100%;margin-bottom:12px}
+button.probar:hover:not(:disabled){background:#005533}
+button.probar:disabled{border-color:#aaccbb;color:#aaccbb;cursor:not-allowed}
+.log{background:#f5f8f6;border:1px solid #ddeedd;padding:10px;margin-bottom:12px;max-height:260px;overflow-y:auto;font-size:11px}
+.log-entry{display:flex;align-items:center;gap:6px;padding:5px 0;border-bottom:1px solid #0a1a0a;flex-wrap:wrap}
+.log-num{color:#558866;min-width:24px;font-size:11px}
+.log-seq{display:flex;gap:4px}
+.log-sq{width:18px;height:18px;border-radius:2px;display:inline-block;border:1px solid rgba(0,0,0,0.3)}
+.log-fb{display:flex;gap:2px;margin:0 4px}
+.fb-bull{color:#006644;font-size:13px;line-height:1}
+.fb-cow{color:#ffcc00;font-size:13px;line-height:1}
+.fb-miss{color:#aaccbb;font-size:13px;line-height:1}
+.log-txt{color:#336655;font-size:11px}
+.empty-log{color:#558866;font-size:11px;text-align:center;padding:14px}
+.attempts{color:#336655;font-size:10px;letter-spacing:1px;margin-bottom:8px;text-align:right}
+.res{margin-top:12px;padding:14px;font-size:12px;display:none;line-height:2;text-align:center}
+.ok{background:#e8f4ee;border:1px solid #00ff88;color:#006644;display:block}
+.blink{animation:blink 1s step-end infinite}@keyframes blink{50%{opacity:0}}
+.foot{margin-top:20px;border-top:1px solid #1a3a2a;padding-top:6px;font-size:11px;color:#aaccbb;text-align:center;letter-spacing:2px}.probe-badge{display:block;text-align:center;font-size:clamp(1.5rem,6vw,2.4rem);font-weight:900;letter-spacing:.12em;padding:12px 8px 10px;margin-bottom:14px;text-transform:uppercase;border-bottom:2px solid currentColor;line-height:1.1}body{font-size:16px!important}@media(max-width:480px){.sbar{flex-direction:column;gap:2px}}</style>
+</head>
+<body>
+<div class="hdr"><div class="ht">AION v4.2.1 — PROTOCOLO DE SECUENCIA</div><div class="hs">NODO-D7 // ACTIVACIÓN DE PROCESOS // CÉLULA DELTA</div></div>
+<div class="sbar"><span>PROCESOS: 5</span><span>MÉTODO: DEDUCCIÓN</span><span>PROTOCOLO Ω: ACTIVO</span></div>
+<div class="probe-badge" style="color:#884400">SECUENCIA</div>
+<div class="ins">Determina el orden correcto de activación. Toca un proceso para añadirlo a la secuencia. Toca un slot para eliminarlo. &nbsp;<span style="color:#006644">■</span> pos. correcta │ <span style="color:#ffcc00">■</span> desplazada.</div>
+<div class="stit">SECUENCIA ACTUAL</div>
+<div class="seq-row">
+<div class="seq-slot" id="slot0" onclick="clearSlot(0)"><span class="slot-pos">POS 1</span><div class="slot-color" id="slotcol0" style="background:#1a3a2a"></div><span class="slot-name" id="slotname0" style="color:#aaccbb">—</span></div>
+<div class="seq-slot" id="slot1" onclick="clearSlot(1)"><span class="slot-pos">POS 2</span><div class="slot-color" id="slotcol1" style="background:#1a3a2a"></div><span class="slot-name" id="slotname1" style="color:#aaccbb">—</span></div>
+<div class="seq-slot" id="slot2" onclick="clearSlot(2)"><span class="slot-pos">POS 3</span><div class="slot-color" id="slotcol2" style="background:#1a3a2a"></div><span class="slot-name" id="slotname2" style="color:#aaccbb">—</span></div>
+<div class="seq-slot" id="slot3" onclick="clearSlot(3)"><span class="slot-pos">POS 4</span><div class="slot-color" id="slotcol3" style="background:#1a3a2a"></div><span class="slot-name" id="slotname3" style="color:#aaccbb">—</span></div>
+<div class="seq-slot" id="slot4" onclick="clearSlot(4)"><span class="slot-pos">POS 5</span><div class="slot-color" id="slotcol4" style="background:#1a3a2a"></div><span class="slot-name" id="slotname4" style="color:#aaccbb">—</span></div>
+</div>
+<div class="stit" style="margin-top:10px">PROCESOS DISPONIBLES</div>
+<div class="elem-row">
+<div class="elem-btn" id="btn-KERNEL" style="background:#003322;border-color:#006644" onclick="addElem('KERNEL')"><div class="elem-color" style="background:#00ff88"></div><span class="elem-name" style="color:#006644">KER</span></div>
+<div class="elem-btn" id="btn-CIPHER" style="background:#330000;border-color:#ff4444" onclick="addElem('CIPHER')"><div class="elem-color" style="background:#ff4444"></div><span class="elem-name" style="color:#ff4444">CIP</span></div>
+<div class="elem-btn" id="btn-NEXUS" style="background:#001133;border-color:#4488ff" onclick="addElem('NEXUS')"><div class="elem-color" style="background:#4488ff"></div><span class="elem-name" style="color:#4488ff">NEX</span></div>
+<div class="elem-btn" id="btn-VAULT" style="background:#332200;border-color:#ffcc00" onclick="addElem('VAULT')"><div class="elem-color" style="background:#ffcc00"></div><span class="elem-name" style="color:#ffcc00">VAU</span></div>
+<div class="elem-btn" id="btn-GHOST" style="background:#220033;border-color:#cc44ff" onclick="addElem('GHOST')"><div class="elem-color" style="background:#cc44ff"></div><span class="elem-name" style="color:#cc44ff">GHO</span></div>
+</div>
+<div class="attempts" id="att">INTENTOS: 0</div>
+<button class="probar" id="probar-btn" onclick="probar()">▶ PROBAR SECUENCIA</button>
+<div class="stit">REGISTRO DE INTENTOS</div>
+<div class="log" id="logbox"><div class="empty-log" id="empty-log">Sin intentos aún</div></div>
+<div class="res" id="rd7"></div>
+<div class="foot">AION CONTAINMENT // CELL-DELTA // NODE-D7 // RESTRICTED</div>
+<script>
+const ELEMS={"KERNEL":{"col":"#00ff88","bg":"#003322"},"CIPHER":{"col":"#ff4444","bg":"#330000"},"NEXUS":{"col":"#4488ff","bg":"#001133"},"VAULT":{"col":"#ffcc00","bg":"#332200"},"GHOST":{"col":"#cc44ff","bg":"#220033"},};
+const SECRET=["CIPHER","VAULT","NEXUS","GHOST","KERNEL"];
+const CODE="1485";
+let seq=[null,null,null,null,null];
+let attempts=0;
+function addElem(name){
+  if(seq.indexOf(name)>=0)return;
+  var idx=seq.indexOf(null);
+  if(idx<0)return;
+  seq[idx]=name;
+  render();
+}
+function clearSlot(i){
+  if(!seq[i])return;
+  seq[i]=null;
+  render();
+}
+function render(){
+  for(var i=0;i<5;i++){
+    var s=document.getElementById("slot"+i);
+    var sc=document.getElementById("slotcol"+i);
+    var sn=document.getElementById("slotname"+i);
+    if(seq[i]){
+      sc.style.background=ELEMS[seq[i]].col;
+      sn.textContent=seq[i].substring(0,3);
+      sn.style.color=ELEMS[seq[i]].col;
+      s.style.borderColor=ELEMS[seq[i]].col;
+      s.style.background=ELEMS[seq[i]].bg;
+    }else{
+      sc.style.background="#1a3a2a";
+      sn.textContent="—";
+      sn.style.color="#1a3a2a";
+      s.style.borderColor="#1a3a2a";
+      s.style.background="#0d1a13";
+    }
+  }
+  Object.keys(ELEMS).forEach(function(n){
+    var b=document.getElementById("btn-"+n);
+    if(seq.indexOf(n)>=0){b.classList.add("used");}
+    else{b.classList.remove("used");}
+  });
+}
+function probar(){
+  if(seq.indexOf(null)>=0){alert("Completa los 5 slots.");return;}
+  attempts++;
+  document.getElementById("att").textContent="INTENTOS: "+attempts;
+  var bulls=0;
+  for(var i=0;i<5;i++) if(seq[i]===SECRET[i]) bulls++;
+  var sc2=SECRET.slice(),gC=seq.slice();
+  for(var i=0;i<5;i++) if(seq[i]===SECRET[i]){sc2[i]=null;gC[i]=null;}
+  var cows=0;
+  for(var i=0;i<5;i++){
+    if(gC[i]!==null){
+      var ix=sc2.indexOf(gC[i]);
+      if(ix>=0){cows++;sc2[ix]=null;}
+    }
+  }
+  var seqH="";
+  for(var i=0;i<5;i++) seqH+='<div class="log-sq" style="background:'+ELEMS[seq[i]].col+'" title="'+seq[i]+'"></div>';
+  var fb="";
+  for(var i=0;i<bulls;i++) fb+='<span class="fb-bull">&#9632;</span>';
+  for(var i=0;i<cows;i++) fb+='<span class="fb-cow">&#9632;</span>';
+  for(var i=0;i<5-bulls-cows;i++) fb+='<span class="fb-miss">&#9633;</span>';
+  var txt=bulls+" pos. correctas, "+cows+" desplazadas";
+  var row='<div class="log-entry"><span class="log-num">#'+attempts+'</span><div class="log-seq">'+seqH+'</div><div class="log-fb">'+fb+'</div><span class="log-txt">'+txt+'</span></div>';
+  var log=document.getElementById("logbox");
+  log.innerHTML=row+log.innerHTML;
+  document.getElementById("empty-log").style.display="none";
+  if(bulls===5){
+    document.getElementById("probar-btn").disabled=true;
+    var r=document.getElementById("rd7");
+    r.className="res ok";
+    r.innerHTML="&#9608;&#9608;&#9608; SECUENCIA VALIDADA &#9608;&#9608;&#9608;<br><br>C&Oacute;DIGO DE ACCESO:<br><span style='font-size:26px;letter-spacing:8px;font-weight:bold'>1485</span><br><br>&gt; SECTOR: &gt; ZONA: CALOR<br>&gt; En invierno tu gran amigo. La estufa de pellets guarda más que calor.<br>&gt; ESCANEA EL QR DEL SECTOR INDICADO.<br>&gt; <span class='blink'>&#9608;</span>";
+  }
+}
+
+</script>
+</body>
+</html>

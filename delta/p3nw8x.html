@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>AION // NODO-D3 — SENSORES</title>
+<style>*{margin:0;padding:0;box-sizing:border-box}
+body{background:#ffffff;color:#006644;font-family:'Courier New',Courier,monospace;font-size:16px;line-height:1.75;padding:18px;min-height:100vh}
+.hdr{border:1px solid #ccddcc;padding:11px 15px;margin-bottom:12px;background:#f0f4f2}
+.ht{color:#006644;font-size:15px;letter-spacing:2px;text-transform:uppercase}
+.hs{color:#336655;font-size:12px;margin-top:4px}
+.sbar{display:flex;justify-content:space-between;background:#f0f4f2;border:1px solid #ccddcc;padding:8px 15px;font-size:12px;color:#336655;margin-bottom:12px;flex-wrap:wrap;gap:3px}
+.alrt{background:#fff3f0;border:1px solid #ff4400;color:#ff6622;padding:13px 15px;margin-bottom:14px;font-size:14px}
+.stit{color:#006644;font-size:13px;letter-spacing:2px;text-transform:uppercase;border-bottom:1px solid #ccddcc;padding-bottom:5px;margin:12px 0 10px}
+.tbl{width:100%;border-collapse:collapse;font-size:13px;margin-bottom:14px}
+.tbl th{background:#e8f4ee;color:#336655;padding:8px 10px;text-align:left;font-size:12px;letter-spacing:1px;border:1px solid #ccddcc}
+.tbl td{padding:8px 10px;border:1px solid #ddeeee;color:#224433}
+.tbl tr:nth-child(even) td{background:#f8faf9}
+input{background:#ffffff;border:1px solid #00ff88;color:#006644;font-family:'Courier New',Courier,monospace;font-size:18px;padding:11px 12px;letter-spacing:5px;outline:none;text-transform:uppercase;width:90px;text-align:center}
+input:focus{border-color:#004433;box-shadow:0 0 8px rgba(0,255,136,.3)}
+button{background:#e8f4ee;border:1px solid #00ff88;color:#006644;font-family:'Courier New',Courier,monospace;font-size:14px;padding:12px 20px;cursor:pointer;letter-spacing:2px;text-transform:uppercase;min-height:44px}
+button:hover{background:#005533}
+.res{margin-top:14px;padding:12px 16px;font-size:14px;display:none;line-height:2}
+.ok{background:#e8f4ee;border:1px solid #00ff88;color:#006644;display:block}
+.er{background:#fff3f0;border:1px solid #ff4400;color:#ff4400;display:block}
+.blink{animation:blink 1s step-end infinite}
+@keyframes blink{50%{opacity:0}}
+.foot{margin-top:20px;border-top:1px solid #1a3a2a;padding-top:6px;font-size:11px;color:#aaccbb;text-align:center;letter-spacing:2px}
+.irow{display:flex;align-items:center;gap:9px;margin-top:7px}
+.ilbl{color:#336655;font-size:14px;margin-bottom:8px;letter-spacing:1px}
+.pr{color:#006644;font-size:14px}.probe-badge{display:block;text-align:center;font-size:clamp(1.5rem,6vw,2.4rem);font-weight:900;letter-spacing:.12em;padding:12px 8px 10px;margin-bottom:14px;text-transform:uppercase;border-bottom:2px solid currentColor;line-height:1.1}body{font-size:16px!important}@media(max-width:480px){.sbar{flex-direction:column;gap:2px}}</style>
+</head>
+<body>
+<div class="hdr"><div class="ht">AION v4.2.1 — MONITOR DE SENSORES</div><div class="hs">NODO-D3 // RED DE CONTENCIÓN // CÉLULA DELTA</div></div>
+<div class="sbar"><span>SENSORES: 14</span><span>ESTADO: PARCIAL</span><span>PROTOCOLO Ω: ACTIVO</span></div>
+<div class="probe-badge" style="color:#884400">MONITORIZACIÓN</div>
+<div class="alrt">AION ha activado alarmas en los sensores que superan el umbral de seguridad.</div>
+<div class="stit" style="color:#006644;font-size:10px;letter-spacing:2px;text-transform:uppercase;border-bottom:1px solid #ccddcc;padding-bottom:4px;margin:12px 0 8px">LECTURAS DE SENSORES — RED DE CONTENCIÓN</div>
+<table class="logtb"><thead><tr><th>SENSOR</th><th>ZONA</th><th>LECTURA</th><th>LÍMITE</th></tr></thead><tbody><tr><td>S-03</td><td>NODE-D</td><td>71<b>2</b></td><td>750</td></tr>
+<tr><td>S-08</td><td>NODE-A</td><td>82<b>3</b></td><td>800</td></tr>
+<tr><td>S-01</td><td>NODE-B</td><td>44<b>5</b></td><td>500</td></tr>
+<tr><td>S-05</td><td>NODE-C</td><td>48<b>9</b></td><td>500</td></tr>
+<tr><td>S-12</td><td>NODE-D</td><td>79<b>0</b></td><td>750</td></tr>
+<tr><td>S-09</td><td>NODE-A</td><td>65<b>4</b></td><td>700</td></tr>
+<tr><td>S-04</td><td>NODE-B</td><td>93<b>3</b></td><td>950</td></tr>
+<tr><td>S-14</td><td>NODE-C</td><td>61<b>7</b></td><td>600</td></tr>
+<tr><td>S-02</td><td>NODE-D</td><td>38<b>1</b></td><td>400</td></tr>
+<tr><td>S-10</td><td>NODE-A</td><td>74<b>8</b></td><td>800</td></tr>
+<tr><td>S-13</td><td>NODE-B</td><td>93<b>6</b></td><td>900</td></tr>
+<tr><td>S-06</td><td>NODE-C</td><td>26<b>7</b></td><td>300</td></tr>
+<tr><td>S-11</td><td>NODE-D</td><td>52<b>3</b></td><td>600</td></tr>
+<tr><td>S-07</td><td>NODE-A</td><td>85<b>9</b></td><td>900</td></tr>
+</tbody></table><div style="color:#336655;font-size:10px;margin-bottom:5px;letter-spacing:1px">CÓDIGO DE ACTIVACIÓN (4 DÍGITOS):</div>
+<div style="display:flex;align-items:center;gap:9px;margin-top:7px"><span style="color:#006644;font-size:14px">&gt;_</span><input type="text" id="ci3" maxlength="4" placeholder="____" autocomplete="off" spellcheck="false"><button onclick="chk3()">VALIDAR</button></div>
+<div class="res" id="rd3"></div>
+<div class="foot">AION CONTAINMENT // CELL-DELTA // NODE-D3 // RESTRICTED</div>
+<script>document.getElementById("ci3").addEventListener("keypress",function(e){if(e.key==="Enter")chk3();});
+function chk3(){
+  var v=document.getElementById("ci3").value.trim();
+  var r=document.getElementById("rd3");
+  if(v==="3076"){
+    r.className="res ok";
+    r.innerHTML="&gt; ANOMALÍAS CONFIRMADAS.<br>&gt; NODO FÍSICO LOCALIZADO.<br>&gt; SECTOR: &gt; ZONA: PASEO<br>&gt; Móntate y pedalea, aunque las ruedas nunca lleguen a ningún lado.<br>&gt; ESCANEA EL QR DEL SECTOR INDICADO.<br>&gt; <span class='blink'>█</span>";
+  }else{
+    r.className="res er";
+    r.innerHTML="&gt; CÓDIGO INCORRECTO.";
+    document.getElementById("ci3").value="";
+  }
+}</script>
+</body>
+</html>

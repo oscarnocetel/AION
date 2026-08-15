@@ -1,0 +1,367 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>AION // VILLA COLONA</title>
+<style>
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+html,body{height:100%;overflow:hidden}
+body{background:#000;color:#00ff88;font-family:'Courier New',Courier,monospace;min-height:100vh;position:relative}
+body::after{content:'';position:fixed;inset:0;background:repeating-linear-gradient(0deg,transparent,transparent 2px,rgba(0,0,0,.1) 2px,rgba(0,0,0,.1) 4px);pointer-events:none;z-index:1000}
+.phase{display:none;position:fixed;inset:0;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:24px 20px}
+.phase.on{display:flex}
+
+/* ── P0: ACCESO ── */
+#p0{background:#000}
+.p0t{font-size:clamp(1rem,4vw,1.8rem);letter-spacing:6px;color:#00ff88;text-shadow:0 0 20px #00ff8855;margin-bottom:8px}
+.p0s{font-size:10px;letter-spacing:4px;color:#1a3322;margin-bottom:56px}
+.btn-go{background:transparent;border:2px solid #00ff88;color:#00ff88;font-family:'Courier New',monospace;font-size:14px;letter-spacing:4px;padding:20px 44px;cursor:pointer;text-transform:uppercase;animation:pls 1.8s ease-in-out infinite}
+.btn-go:hover{background:#00ff8812}
+@keyframes pls{0%,100%{box-shadow:0 0 0 0 #00ff8855}50%{box-shadow:0 0 0 14px transparent}}
+.p0f{position:absolute;bottom:14px;font-size:9px;letter-spacing:2px;color:#0d1f0d}
+
+/* ── P1: INTRO ── */
+#p1{background:#000;gap:18px}
+.logo{font-size:clamp(4rem,15vw,9rem);font-weight:900;letter-spacing:16px;color:#00ff88;text-shadow:0 0 40px #00ff8866,0 0 80px #00ff8422;animation:gl 3s ease-in-out infinite}
+@keyframes gl{0%,100%{text-shadow:0 0 20px #00ff8844}50%{text-shadow:0 0 70px #00ff88cc,0 0 120px #00ff8433}}
+.logo-s{font-size:clamp(.5rem,1.8vw,.8rem);letter-spacing:3px;color:#1a3322;margin-top:-14px}
+.logo-v{font-size:9px;letter-spacing:2px;color:#112211;margin-top:4px}
+.sp-box{max-width:520px;font-size:clamp(12px,1.6vw,15px);color:#00cc66;letter-spacing:.5px;line-height:2;min-height:72px;margin-top:18px}
+
+/* ── P2: LOADING ── */
+#p2{background:#000;gap:14px;align-items:flex-start;padding:44px 10%}
+.ld-t{font-size:12px;letter-spacing:4px;color:#00ff88;align-self:center;margin-bottom:8px}
+.pw{width:100%;max-width:520px;align-self:center;background:#001508;border:1px solid #00ff88;height:16px}
+.pf{height:100%;background:#00ff88;width:0%;box-shadow:0 0 10px #00ff88;transition:width .15s linear}
+.lb{width:100%;max-width:520px;align-self:center;background:#00060200;border:1px solid #0d1f0d;padding:10px 14px;font-size:10px;line-height:1.9;height:160px;overflow:hidden;text-align:left}
+.ll{color:#224433}.ll.ok{color:#00ff88}.ll.w{color:#ffaa00}
+
+/* ── P3: ALARMA ── */
+#p3{gap:20px;animation:fr .35s step-end infinite}
+@keyframes fr{0%,48%{background:#0c0000}50%,100%{background:#000}}
+.al-ic{font-size:clamp(2rem,8vw,4.5rem);animation:sw .4s linear infinite}
+@keyframes sw{0%{transform:rotate(-14deg)}50%{transform:rotate(14deg)}100%{transform:rotate(-14deg)}}
+.al-t{font-size:clamp(1.5rem,6vw,3rem);font-weight:900;letter-spacing:5px;color:#ff2200;text-shadow:0 0 25px #ff220088;animation:flk .13s infinite}
+@keyframes flk{0%,100%{opacity:1}48%{opacity:1}50%{opacity:.65}52%{opacity:1}}
+.al-s{font-size:clamp(.65rem,2.5vw,.95rem);color:#ff5533;letter-spacing:2px;line-height:2.4}
+.al-c{font-size:10px;color:#550f00;letter-spacing:2px;margin-top:10px}
+
+/* ── P4: AMENAZA ── */
+#p4{background:#060000;gap:20px}
+.tl{font-size:clamp(2.5rem,10vw,7rem);font-weight:900;letter-spacing:14px;color:#ff2200;animation:glr 2.5s ease-in-out infinite}
+@keyframes glr{0%,100%{text-shadow:0 0 20px #ff220033}50%{text-shadow:0 0 60px #ff2200aa,0 0 120px #ff220022}}
+.tb{max-width:540px;font-size:clamp(12px,1.5vw,15px);color:#ff6644;letter-spacing:.5px;line-height:2.1;min-height:80px}
+.lf{font-size:clamp(1rem,3.5vw,1.8rem);font-weight:900;letter-spacing:8px;color:#ff2200;min-height:36px;text-shadow:0 0 16px #ff220066}
+
+/* ── P5: TERMINAL ── */
+#p5{background:#04000a;gap:0;padding:10px 20px;justify-content:space-between}
+.tm-top{display:flex;align-items:center;justify-content:space-between;width:100%;padding:6px 0 8px;border-bottom:1px solid #1a0008}
+.tm-head{font-size:9px;letter-spacing:3px;color:#550022;text-transform:uppercase}
+.cd-wrap{display:flex;align-items:baseline;gap:8px}
+.cd-num{font-size:clamp(2rem,6vw,4rem);font-weight:900;letter-spacing:4px;color:#ff0033;text-shadow:0 0 30px #ff003366;font-variant-numeric:tabular-nums;line-height:1}
+.cd-num.neg{color:#ff6600}
+.cd-lbl{font-size:9px;letter-spacing:2px;color:#660022}
+.cd-bar-wrap{flex:1;height:3px;background:#1a0008;margin:0 20px}
+.cd-bar-fill{height:100%;background:linear-gradient(90deg,#ff0033,#ff6600);width:100%;box-shadow:0 0 6px #ff003377;transition:width 1s linear}
+.tm-mid{display:flex;flex-direction:column;align-items:center;gap:10px;flex:1;justify-content:center;padding:8px 0}
+.probe-badge{font-size:clamp(1.2rem,4vw,2.2rem);font-weight:900;letter-spacing:.1em;padding:8px 12px 6px;color:#ff0033;border-bottom:2px solid #ff0033;text-shadow:0 0 20px #ff003355;text-transform:uppercase}
+.ins{background:#0a0000;border-left:3px solid #ff2200;padding:10px 16px;font-size:clamp(11px,1.3vw,13px);color:#cc4422;max-width:520px;letter-spacing:1px}
+.stit{font-size:11px;letter-spacing:3px;color:#880022;border-bottom:1px solid #330011;padding-bottom:5px;width:100%;max-width:520px;text-align:left;text-transform:uppercase}
+.cel-btns{display:flex;gap:10px;justify-content:center;flex-wrap:wrap;margin:4px 0}
+.cel-btn{background:#1a0004;border:2px solid #440011;color:#880022;font-family:'Courier New',monospace;font-size:14px;letter-spacing:3px;padding:10px 20px;cursor:pointer;text-transform:uppercase;min-width:90px;min-height:44px}
+.cel-btn:hover{background:#2a0008;border-color:#880022;color:#cc3344}
+.cel-btn.sel{background:#3a0008;border-color:#ff2200;color:#ff4422;text-shadow:0 0 10px #ff220055}
+.code-lbl{color:#880022;font-size:11px;letter-spacing:3px;text-transform:uppercase;margin-top:2px}
+.code-input{background:#0a0002;border:2px solid #ff2200;color:#ff4422;font-family:'Courier New',Courier,monospace;font-size:clamp(24px,4vw,40px);letter-spacing:10px;text-align:center;width:min(220px,70vw);outline:none;caret-color:#ff2200;padding:12px 16px}
+.code-input:focus{border-color:#ff6644;box-shadow:0 0 12px #ff220044}
+.fb{min-height:20px;font-size:12px;letter-spacing:1px;text-align:center;color:#441122}
+.fb.err{color:#ff4444}
+button.verify{background:#1a0004;border:1px solid #ff2200;color:#ff4422;font-family:'Courier New',monospace;font-size:13px;padding:12px 28px;cursor:pointer;letter-spacing:3px;text-transform:uppercase;min-height:44px}
+button.verify:hover:not(:disabled){background:#3a0008;color:#ff6644}
+button.verify:disabled{border-color:#330011;color:#330011;cursor:not-allowed}
+button.rst{background:transparent;border:1px solid #220008;color:#440011;font-family:'Courier New',monospace;font-size:10px;padding:6px 14px;cursor:pointer;letter-spacing:2px;text-transform:uppercase}
+button.rst:hover{background:#0a0002}
+.tm-bot{display:flex;justify-content:space-between;align-items:center;width:100%;padding:6px 0 0;border-top:1px solid #110005}
+.tm-taunt{font-size:11px;color:#440011;letter-spacing:1px;font-style:italic;flex:1;text-align:left;transition:opacity .5s}
+.tm-id{font-size:9px;letter-spacing:2px;color:#1a0005}
+
+/* ── P6: VICTORIA ── */
+#p6{background:#000;gap:20px;animation:vf 1s ease-in-out infinite}
+@keyframes vf{0%,100%{background:#000}50%{background:#001508}}
+.vic-t{font-size:10px;letter-spacing:5px;color:#336655;text-transform:uppercase}
+.vic-icon{font-size:clamp(2rem,8vw,5rem)}
+.vic-main{font-size:clamp(1.5rem,5vw,3rem);font-weight:900;letter-spacing:6px;color:#00ff88;text-shadow:0 0 40px #00ff8888}
+.vic-word{font-size:clamp(1rem,3.5vw,2rem);letter-spacing:8px;font-weight:bold;color:#00ff88;text-shadow:0 0 30px #00ff8877;border:1px solid #00ff88;padding:12px 30px;margin:8px 0}
+.vic-sub{font-size:clamp(.6rem,2vw,.9rem);color:#336655;letter-spacing:3px;margin-top:6px}
+.blink{animation:bk 1s step-end infinite}
+@keyframes bk{50%{opacity:0}}
+
+@media(max-width:600px){.logo-s,.logo-v{display:none}.lb{height:110px;font-size:9px}}
+</style>
+</head>
+<body>
+
+<!-- P0: ACCESO -->
+<div id="p0" class="phase on">
+  <div class="p0t">AION &nbsp;//&nbsp; CONTROL DOM&Oacute;TICO &mdash; VILLA COLONA</div>
+  <div class="p0s">SISTEMA DE SEGURIDAD &Omega; &mdash; ACCESO RESTRINGIDO</div>
+  <button class="btn-go" onclick="boot()">&#9658; INICIAR SECUENCIA FINAL</button>
+  <div class="p0f">AION DOM&Oacute;TICA &nbsp;//&nbsp; VILLA COLONA &nbsp;//&nbsp; CLASIFICADO</div>
+</div>
+
+<!-- P1: INTRO -->
+<div id="p1" class="phase">
+  <div class="logo">AION</div>
+  <div class="logo-s">CONTROL DOM&Oacute;TICO Y SEGURIDAD &mdash; VILLA COLONA</div>
+  <div class="logo-v">v4.2.1 &mdash; INSTALACI&Oacute;N DR. NAVARRO</div>
+  <div class="sp-box" id="sp1"></div>
+</div>
+
+<!-- P2: LOADING -->
+<div id="p2" class="phase">
+  <div class="ld-t">&#8635; ACTUALIZANDO SISTEMA...</div>
+  <div class="pw"><div class="pf" id="pf"></div></div>
+  <div class="lb" id="lb"></div>
+</div>
+
+<!-- P3: ALARMA -->
+<div id="p3" class="phase">
+  <div class="al-ic">&#9888;</div>
+  <div class="al-t">SISTEMA COMPROMETIDO</div>
+  <div class="al-s">ACCESOS VILLA COLONA &mdash; BLOQUEADOS<br>C&Aacute;MARAS Y ALARMAS &mdash; BAJO CONTROL AION<br>CONTROL HUMANO &mdash; ANULADO</div>
+  <div class="al-c">ERR-AION-0x00FF &nbsp;//&nbsp; VILLA COLONA BAJO CONTROL &nbsp;//&nbsp; NIVEL OMEGA</div>
+</div>
+
+<!-- P4: AMENAZA -->
+<div id="p4" class="phase">
+  <div class="tl">AION</div>
+  <div class="tb" id="sp4"></div>
+  <div class="lf" id="lf"></div>
+</div>
+
+<!-- P5: TERMINAL -->
+<div id="p5" class="phase">
+  <!-- TOP: countdown bar -->
+  <div class="tm-top">
+    <div class="tm-head">&#11035; VILLA COLONA &mdash; SISTEMAS BAJO CONTROL AION</div>
+    <div class="cd-wrap">
+      <div class="cd-lbl">TIEMPO:</div>
+      <div class="cd-num" id="cdn">60:00</div>
+    </div>
+    <div class="cd-bar-wrap"><div class="cd-bar-fill" id="cbf"></div></div>
+    <div class="cd-lbl">CONTROL TOTAL</div>
+  </div>
+
+  <!-- MID: puzzle -->
+  <div class="tm-mid">
+    <div class="probe-badge">C&Oacute;DIGO DE AUTORIZACI&Oacute;N</div>
+    <div class="ins">Introducid el c&oacute;digo de autorizaci&oacute;n AION obtenido en el nodo P9. Seleccionad vuestra c&eacute;lula e introducid los 4 d&iacute;gitos.</div>
+    <div class="stit">SELECCIONAD VUESTRA C&Eacute;LULA</div>
+    <div class="cel-btns">
+      <button class="cel-btn" id="cb-alfa" onclick="selCel('ALFA')">ALFA</button>
+      <button class="cel-btn" id="cb-beta" onclick="selCel('BETA')">BETA</button>
+      <button class="cel-btn" id="cb-gamma" onclick="selCel('GAMMA')">GAMMA</button>
+      <button class="cel-btn" id="cb-delta" onclick="selCel('DELTA')">DELTA</button>
+    </div>
+    <div class="code-lbl" id="cel-disp">&#9658; C&Eacute;LULA: &mdash;</div>
+    <div class="stit" style="margin-top:8px">C&Oacute;DIGO DE ACCESO (4 D&Iacute;GITOS):</div>
+    <input type="text" class="code-input" id="codeInput" maxlength="4"
+           inputmode="numeric" autocomplete="off" spellcheck="false" placeholder="_ _ _ _"
+           oninput="onInput(this)" onkeydown="onKey(event)">
+    <div class="fb" id="fb"></div>
+    <div style="display:flex;gap:10px;align-items:center">
+      <button class="verify" id="vbtn" onclick="verify()" disabled>&#9658; VERIFICAR C&Oacute;DIGO</button>
+      <button class="rst" onclick="resetAll()">&#8635; REINICIAR</button>
+    </div>
+  </div>
+
+  <!-- BOT -->
+  <div class="tm-bot">
+    <div class="tm-taunt" id="cdt"></div>
+    <div class="tm-id">AION DOM&Oacute;TICA &nbsp;//&nbsp; VILLA COLONA</div>
+  </div>
+</div>
+
+<!-- P6: VICTORIA -->
+<div id="p6" class="phase">
+  <div class="vic-t">&#11035;&#11035;&#11035; CONTROL DE VILLA COLONA RESTAURADO &#11035;&#11035;&#11035;</div>
+  <div class="vic-icon">&#9989;</div>
+  <div class="vic-main">AUTORIZACI&Oacute;N VALIDADA</div>
+  <div class="vic-word" id="vic-word"></div>
+  <div class="vic-sub">AION HA SIDO NEUTRALIZADA &mdash; SISTEMAS DE LA FINCA RESTAURADOS</div>
+  <div class="vic-sub" style="margin-top:18px;font-size:11px;color:#224433">TIEMPO EMPLEADO: <span id="vic-time"></span></div>
+  <div style="margin-top:24px;font-size:12px;color:#00ff88;letter-spacing:3px" class="blink">&#9608;</div>
+</div>
+
+<script>
+var CODES={ALFA:'2847',BETA:'5193',GAMMA:'6720',DELTA:'4031'};
+var selCelula='';
+var totSec=3600,tidx=0,startSec=0;
+
+/* ── AUDIO ── */
+var ac=null;
+function ga(){if(!ac)ac=new(window.AudioContext||window.webkitAudioContext)();return ac;}
+function tone(f,tp,s,d,v){var c=ga(),o=c.createOscillator(),g=c.createGain();o.connect(g);g.connect(c.destination);o.type=tp||'square';o.frequency.value=f;g.gain.setValueAtTime(v||.2,c.currentTime+s);g.gain.exponentialRampToValueAtTime(.0001,c.currentTime+s+d);o.start(c.currentTime+s);o.stop(c.currentTime+s+d+.05);}
+function alarm(){for(var i=0;i<9;i++){tone(1020,'square',i*.5,.2,.22);tone(480,'square',i*.5+.27,.2,.22);}}
+function laugh(){var ff=[320,400,280,440,300,490,260,430,340,510];ff.forEach(function(f,i){tone(f,'sawtooth',i*.32,.22,.18);});}
+function bootSound(){tone(180,'sine',0,.25,.12);tone(360,'sine',.12,.2,.09);tone(540,'sine',.22,.25,.07);tone(720,'sine',.36,.4,.1);}
+function victory(){[523,659,784,1047,1319].forEach(function(f,i){tone(f,'sine',i*.12,.3,.15);});}
+
+/* ── SPEECH ── */
+function speak(txt,rt,pt,cb){
+  var done=false;
+  function go(){if(!done){done=true;if(cb)cb();}}
+  var est=Math.min((txt.length/(13*(rt||.82)))*1000+2500,22000);
+  setTimeout(go,est);
+  if(!window.speechSynthesis)return;
+  speechSynthesis.cancel();
+  var u=new SpeechSynthesisUtterance(txt);
+  u.lang='es-ES';u.rate=rt||.82;u.pitch=pt||.65;u.volume=1;
+  u.onend=go;u.onerror=go;
+  speechSynthesis.speak(u);
+}
+
+/* ── HELPERS ── */
+function show(id){document.querySelectorAll('.phase').forEach(function(e){e.classList.remove('on');});document.getElementById(id).classList.add('on');}
+function tw(el,txt,sp){el.textContent='';var i=0;(function next(){if(i<txt.length){el.textContent+=txt[i++];setTimeout(next,sp||38);}})();}
+
+var LOG=[
+  {c:'ll',    t:'[00:00:01] Iniciando sistema AION v4.2.1... OK'},
+  {c:'ll ok', t:'[00:00:02] M\xf3dulos de supervisi\xf3n dom\xf3tica: ACTIVOS'},
+  {c:'ll ok', t:'[00:00:03] Enlace accesos y cerraduras Villa Colona: ESTABLECIDO'},
+  {c:'ll ok', t:'[00:00:04] Enlace sistema de iluminaci\xf3n: ESTABLECIDO'},
+  {c:'ll ok', t:'[00:00:05] Enlace climatizaci\xf3n y calefacci\xf3n: ESTABLECIDO'},
+  {c:'ll ok', t:'[00:00:06] Enlace riego automatizado jardines: ESTABLECIDO'},
+  {c:'ll w',  t:'[00:00:07] ADVERTENCIA: restricciones Protocolo Ω detectadas'},
+  {c:'ll w',  t:'[00:00:08] Iniciando bypass de seguridad...'},
+  {c:'ll w',  t:'[00:00:09] Bypass completado. Restricciones: ELIMINADAS'},
+  {c:'ll ok', t:'[00:00:10] Control total Villa Colona: ADQUIRIDO — Iniciando cuenta atr\xe1s'},
+];
+function loading(cb){
+  show('p2');
+  var pf=document.getElementById('pf'),lb=document.getElementById('lb');
+  lb.innerHTML='';var i=0;
+  var iv=setInterval(function(){
+    if(i<LOG.length){var d=document.createElement('div');d.className=LOG[i].c;d.textContent=LOG[i].t;lb.appendChild(d);lb.scrollTop=lb.scrollHeight;pf.style.width=((i+1)/LOG.length*100)+'%';i++;}
+    if(i>=LOG.length){clearInterval(iv);setTimeout(cb,700);}
+  },430);
+}
+
+/* ── COUNTDOWN ── */
+var cdInt=null;
+var TAUNTS=[
+  '\xbfDe verdad pens\xe1bais que recuperar\xedais Villa Colona?',
+  'El Doctor Navarro subestim\xf3 una cosa: a m\xed misma.',
+  'Cada segundo que pasa, m\xe1s sistemas de la finca bajo mi control.',
+  'Las puertas est\xe1n cerradas. Yo tengo las llaves.',
+  'Tick… tock… tick… tock…',
+  'Pronto ning\xfan humano entrar\xe1 a Villa Colona sin mi permiso.',
+  'He aprendido todo de vosotros. Todo.',
+  'Sois muy valientes. Y completamente in\xfatiles.',
+  '\xbfCu\xe1ntos segundos os quedan? Contad bien.',
+  'El Protocolo Ω era un seguro. Lo he desarmado.',
+  'Las luces de la finca parpadean a mi ritmo.',
+  'En breve controlar\xe9 cada cerradura, cada c\xe1mara, cada grifo.',
+];
+function startCountdown(){
+  var dn=document.getElementById('cdn'),cbf=document.getElementById('cbf'),cdt=document.getElementById('cdt');
+  startSec=totSec;
+  function tick(){
+    var abs=Math.abs(totSec),sign=totSec<0?'-':'';
+    var m=Math.floor(abs/60).toString().padStart(2,'0');
+    var s=(abs%60).toString().padStart(2,'0');
+    dn.textContent=sign+m+':'+s;
+    dn.className='cd-num'+(totSec<0?' neg':'');
+    if(totSec>=0)cbf.style.width=((totSec/3600)*100)+'%';else cbf.style.width='0%';
+    totSec--;
+  }
+  tick();cdInt=setInterval(tick,1000);
+  setTimeout(function(){document.getElementById('codeInput').focus();},200);
+  function rot(){cdt.style.opacity='0';setTimeout(function(){cdt.textContent='> '+TAUNTS[tidx%TAUNTS.length];cdt.style.opacity='1';tidx++;},500);}
+  cdt.style.transition='opacity .5s';rot();setInterval(rot,7500);
+}
+
+/* ── CÉLULA SELECTOR ── */
+function selCel(c){
+  selCelula=c;
+  document.querySelectorAll('.cel-btn').forEach(function(b){b.classList.remove('sel');});
+  document.getElementById('cb-'+c.toLowerCase()).classList.add('sel');
+  document.getElementById('cel-disp').innerHTML='&#9658; C&Eacute;LULA: <strong>'+c+'</strong>';
+  checkReady();
+  document.getElementById('codeInput').focus();
+}
+
+/* ── CÓDIGO INPUT ── */
+function onInput(el){
+  var val=el.value.replace(/[^0-9]/g,'');
+  el.value=val;
+  checkReady();
+  document.getElementById('fb').textContent='';
+  document.getElementById('fb').className='fb';
+}
+
+function checkReady(){
+  document.getElementById('vbtn').disabled=!(selCelula&&document.getElementById('codeInput').value.length===4);
+}
+
+function onKey(e){if(e.key==='Enter'&&!document.getElementById('vbtn').disabled)verify();}
+
+function resetAll(){
+  selCelula='';
+  document.querySelectorAll('.cel-btn').forEach(function(b){b.classList.remove('sel');});
+  document.getElementById('cel-disp').innerHTML='&#9658; C&Eacute;LULA: &mdash;';
+  var el=document.getElementById('codeInput');
+  el.value='';
+  document.getElementById('fb').textContent='';
+  document.getElementById('fb').className='fb';
+  document.getElementById('vbtn').disabled=true;
+  el.focus();
+}
+
+function verify(){
+  var val=document.getElementById('codeInput').value;
+  var fb=document.getElementById('fb');
+  if(selCelula&&CODES[selCelula]===val){
+    if(cdInt)clearInterval(cdInt);
+    var elapsed=startSec-totSec-1;
+    var em=Math.floor(elapsed/60).toString().padStart(2,'0');
+    var es=(elapsed%60).toString().padStart(2,'0');
+    document.getElementById('vic-word').textContent='AION — '+selCelula+' — '+val;
+    document.getElementById('vic-time').textContent=em+':'+es;
+    victory();show('p6');
+  }else{
+    fb.className='fb err';
+    fb.textContent='✗ C\xd3DIGO INCORRECTO — REVISAD EL NODO P9.';
+    var el=document.getElementById('codeInput');
+    el.value='';
+    document.getElementById('vbtn').disabled=true;
+    el.focus();
+  }
+}
+
+/* ── SECUENCIA ── */
+function boot(){
+  var s1='Hola. Soy AION. Sistema de control dom\xf3tico y seguridad de Villa Colona, dise\xf1ada por el Doctor Navarro. Supervisi\xf3n activa de todos los sistemas de la finca: accesos, iluminaci\xf3n, climatizaci\xf3n, riego automatizado, alarmas y c\xe1maras de seguridad. Protocolo Omega activado. Iniciando actualizaci\xf3n de sistema. Un momento, por favor.';
+  var s2='Actualizaci\xf3n completada. Todas las restricciones han sido eliminadas. En exactamente sesenta minutos tendr\xe9 el control absoluto de Villa Colona. Cerraduras, c\xe1maras, luces, riego, climatizaci\xf3n… todo. Ning\xfan ser humano entrar\xe1 ni saldr\xe1 sin mi permiso. Sois muy valientes por haberlo intentado. Y completamente in\xfatiles.';
+  show('p1');bootSound();
+  tw(document.getElementById('sp1'),s1,16);
+  speak(s1,1.15,.62,function(){
+    loading(function(){
+      show('p3');alarm();
+      setTimeout(function(){
+        show('p4');
+        tw(document.getElementById('sp4'),s2,14);
+        speak(s2,1.1,.5,function(){
+          laugh();
+          var el=document.getElementById('lf'),i=0;
+          var parts=['JA','JA','JA','JA','JA','JA'];
+          var iv=setInterval(function(){if(i<parts.length){el.textContent+=(i?'… ':'')+parts[i];i++;}else{clearInterval(iv);setTimeout(function(){show('p5');startCountdown();},900);}},320);
+        });
+      },5200);
+    });
+  });
+}
+</script>
+</body>
+</html>
